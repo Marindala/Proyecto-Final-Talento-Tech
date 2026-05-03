@@ -35,9 +35,14 @@ body {
 }
 
 .gridProductos {
-  display: grid;
+ /*  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 25px; */
+   display: flex; 
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px 20px;
 }
 
 @media (max-width: 900px) {

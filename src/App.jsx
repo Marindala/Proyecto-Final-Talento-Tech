@@ -15,7 +15,7 @@ function App() {
         </section>
 
         <section className="catalogo">
-          <h2>Nuestros Productos</h2>
+          <h2>Nuestros Productos Destacados</h2>
 
           <div className="gridProductos">
             <TarjetaProducto
