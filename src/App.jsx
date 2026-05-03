@@ -1,9 +1,9 @@
 import "./App.css";
-import Layout from "./components/layout/Layout";
+import Layout from "./layout/Layout";
 import TarjetaProducto from "./components/TarjetaProducto/TarjetaProducto";
-import image1 from "/public/image1.jpeg";
-import image2 from "/public/image2.jpeg";
-import image3 from "/public/image3.jpeg";
+import image1 from "../public/image/image1.jpeg";
+import image2 from "../public/image/image2.jpeg";
+import image3 from "../public/image/image3.jpeg";
 
 function App() {
   return (
