@@ -1,0 +1,31 @@
+.contenedor {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.mensaje {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.error {
+  text-align: center;
+  color: yellow;
+  font-size: 16px;
+  padding: 20px;
+}

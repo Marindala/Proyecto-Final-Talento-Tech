@@ -4,20 +4,23 @@
 "nombre": "Florencia Reggia",
 "email": "florenciareggia@gmail.com",
 "puesto":"fotografa profesional",
-"imagen": "/images/imageA.png"
+"imagen": "/images/imageA.png",
+ "posicion": "left center"
 },
 {
 "id": 2,
 "nombre": "Carla Romero",
 "email": "carlaromero@gmail.com",
 "puesto": "Diseñadora UX-UI",
-"imagen": "/images/imageB.png"
+"imagen": "/images/imageB.png",
+ "posicion": "left center"
 },
 {
 "id": 3,
 "nombre": "Martín Serius",
 "email": "martinserius@gmail.com",
 "puesto":"CEO",
+"posicion": "50% 20%",
 "imagen": "/images/imageC.png"
 },
 {
@@ -25,7 +28,8 @@
 "nombre": "Fabricio Martel",
 "email": "fabriciomartel@gmail.com",
 "puesto":"Programador Senior",
-"imagen": "/images/imageD.png"
+"imagen": "/images/imageD.png",
+ "posicion": "left center"
 }
 ]
 
