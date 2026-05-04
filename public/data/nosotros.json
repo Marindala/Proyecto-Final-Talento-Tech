@@ -1,0 +1,31 @@
+[
+{
+"id": 1,
+"nombre": "Florencia Reggia",
+"email": "florenciareggia@gmail.com",
+"puesto":"fotografa profesional",
+"imagen": "/images/imageA.png"
+},
+{
+"id": 2,
+"nombre": "Carla Romero",
+"email": "carlaromero@gmail.com",
+"puesto": "Diseñadora UX-UI",
+"imagen": "/images/imageB.png"
+},
+{
+"id": 3,
+"nombre": "Martín Serius",
+"email": "martinserius@gmail.com",
+"puesto":"CEO",
+"imagen": "/images/imageC.png"
+},
+{
+"id": 4,
+"nombre": "Fabricio Martel",
+"email": "fabriciomartel@gmail.com",
+"puesto":"Programador Senior",
+"imagen": "/images/imageD.png"
+}
+]
+

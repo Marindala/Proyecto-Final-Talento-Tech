@@ -37,11 +37,13 @@ const decrementar = () => {
                 <p style={{ margin: '0 10px' }}>{cantidad}</p>
                 <button onClick={incrementar}>+</button>
             </div>
+            <div className={styles.contentBoton}>
       <button className={styles.boton}  onClick={agregarAlCarrito}>Agregar al carrito</button>
       <span onClick={marcarComoFavorito}
-                style={{ fontSize: '24px' }}
+                style={{ fontSize: '26px', margin:"10px",position: "absolute" }}
             > {esFavorito ? '⭐' : '☆'}
             </span>
+          </div>
     </div>
   );
 }
