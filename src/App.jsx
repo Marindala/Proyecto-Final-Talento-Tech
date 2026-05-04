@@ -23,18 +23,22 @@ function App() {
               imagen={image1}
               nombre="Buzo Buche Lanilla Argentina"
               precio="$35000"
+              stock={10}
             />
 
             <TarjetaProducto
               imagen={image2}
               nombre="Buzo Buche Lanilla Árbol"
               precio="$35000"
+              stock={10}
             />
 
             <TarjetaProducto
               imagen={image3}
               nombre="Buzo Buche de Lanilla Corazón"
               precio="$35000"
+              stock={10}
+              
             />
           </div>
         </section>

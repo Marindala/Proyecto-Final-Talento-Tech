@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import styles from "./TarjetaProducto.module.css";
 
-function TarjetaProducto({ imagen, nombre, precio }) {
+function TarjetaProducto({ imagen, nombre, precio, stock }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setesFavorito] = useState(false)
 
@@ -13,16 +13,13 @@ function TarjetaProducto({ imagen, nombre, precio }) {
                si prev era true, devuelve false */
 
   }
-  const incrementar = () => {
-    if (cantidad < stock) {
-      setCantidad(cantidad + 1); //setear =cambiame el valor
-    }
-  };
-  const decrementar = () => {
-    if (cantidad > 1) {
-      setCantidad(cantidad - 1);
-    }
-  };
+const incrementar = () => {
+  setCantidad(prev => (prev < stock ? prev + 1 : prev));
+};
+
+const decrementar = () => {
+  setCantidad(prev => (prev > 0 ? prev - 1 : prev));
+};
   const agregarAlCarrito = () => {
     alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
   }
@@ -31,6 +28,15 @@ function TarjetaProducto({ imagen, nombre, precio }) {
       <img className={styles.imagen} src={imagen} alt={nombre} />
       <h3 className={styles.nombre}>{nombre}</h3>
       <p className={styles.precio}>{precio}</p>
+      <p>Stock disponible: {stock}</p>
+            <div style={{
+                display: 'flex', alignItems: 'center', justifyContent:
+                    'center', margin: '10px 0'
+            }}>
+                <button onClick={decrementar}>-</button>
+                <p style={{ margin: '0 10px' }}>{cantidad}</p>
+                <button onClick={incrementar}>+</button>
+            </div>
       <button className={styles.boton}  onClick={agregarAlCarrito}>Agregar al carrito</button>
       <span onClick={marcarComoFavorito}
                 style={{ fontSize: '24px' }}

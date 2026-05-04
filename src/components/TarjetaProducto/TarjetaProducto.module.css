@@ -56,8 +56,8 @@
   transition: 0.25s ease;
   overflow: hidden;
 
-  width: 320px;      /* ancho fijo */
-  height: 560px;     /* alto más grande (card larga) */
+  width: 420px;      /* ancho fijo */
+  height: 720px;     /* alto más grande (card larga) */
 /*   display: flex;
   flex-direction: column;
   justify-content: space-between; */
@@ -71,7 +71,7 @@
 /* IMAGEN */
 .imagen {
   width: 100%;
-  height: 420px; 
+  height: 520px; 
   object-fit: contain; /* IMPORTANTE: ya no recorta */
   border-radius: 14px;
   background-color: #f7f7f7; /* relleno si sobra espacio */
