@@ -140,10 +140,10 @@
 
 
 
-.boton:active {
+/* .boton:active {
   transform: scale(0.97);
 }
-
+ */
 
 .boton:hover {
   background-color: #773f5f;
