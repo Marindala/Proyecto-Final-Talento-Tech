@@ -22,7 +22,7 @@ export function FormularioProducto({ datosForm,
 
                 <input
                     type="text"
-                    placeholder="Ej: Teclado Mecánico"
+                    placeholder="Ej: Buzo Lanilla..."
                     name="nombre" // Atributo clave para identificar el input
                     value={datosForm.nombre}
                     onChange={manejarCambio}
