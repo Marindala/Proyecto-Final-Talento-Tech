@@ -17,7 +17,7 @@ function FormularioContainer() {
 
     };
 
-    // 2. Define las funciones
+    
     const manejarCambio = (evento) => {
         const { name, value } = evento.target;
         setDatosForm({
