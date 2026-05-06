@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { FormularioProducto } from '../FormularioProducto/FormularioProducto';
 
-function FormularioContainer() {
+function NewProductContainer() {
     // 1. Guarda los datos en el estado
     const [datosForm, setDatosForm] = useState({
         nombre: '', precio: '', stock: '', // Quitamos la urlImagen de aca porque la obtendremos después de la subida
     });
+
+    const [loading, setLoading] = useState(false);
 
     const [imagenFile, setImagenFile] = useState(null);
 
@@ -17,7 +19,7 @@ function FormularioContainer() {
 
     };
 
-    
+    // 2. Define las funciones
     const manejarCambio = (evento) => {
         const { name, value } = evento.target;
         setDatosForm({
@@ -38,6 +40,7 @@ function FormularioContainer() {
         const formData = new FormData();
         formData.append('image', imagenFile);
         console.log(imagenFile);
+        setLoading(true);
 
         try {
             console.log("Subiendo imagen a Imgbb...");
@@ -70,7 +73,12 @@ function FormularioContainer() {
         } catch (error) {
             console.error("Error en el proceso de envío:", error);
             alert("Hubo un error al subir la imagen. Por favor, intentá de nuevo.");
-}
+        }
+        finally {
+            // ✅ Siempre desactiva loading
+            setLoading(false);
+        }
+
     };
 
     // 3. Conecta la lógica con la vista
@@ -80,8 +88,9 @@ function FormularioContainer() {
             manejarCambio={manejarCambio}
             manejarEnvio={manejarEnvio}
             manejarCambioImagen={manejarCambioImagen}
+            loading={loading} 
         />
     );
 }
 
-export default FormularioContainer;
+export default NewProductContainer;

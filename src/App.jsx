@@ -5,7 +5,7 @@ import image1 from "../public/image/image1.jpeg";
 import image2 from "../public/image/image2.jpeg";
 import image3 from "../public/image/image3.jpeg";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import FormularioContainer from "./components/FormularioContainer/FormularioContainer";
+import NewProductContainer from "./components/NewProductContainer/NewProductContainer";
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
           </div>
         </section>
         <section>
-           <FormularioContainer />
+           <NewProductContainer />
     
         </section>
       </main>
