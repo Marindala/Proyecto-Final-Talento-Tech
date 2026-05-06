@@ -10,6 +10,7 @@ return (
 );
 }
 
+export default ItemList;
 //Detalles del código:
 /* 1. Con el div agrupamos los elementos y le damos estilo en línea a este grupo
 puntualmente.
