@@ -55,6 +55,8 @@
   text-align: center;
   transition: 0.25s ease;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
 
   width: 420px;
   /* ancho fijo */

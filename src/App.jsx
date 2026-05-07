@@ -1,34 +1,32 @@
 import "./App.css";
 import Layout from "./layout/Layout";
-import TarjetaProducto from "./components/TarjetaProducto/TarjetaProducto";
-import image1 from "../public/image/image1.jpeg";
-import image2 from "../public/image/image2.jpeg";
-import image3 from "../public/image/image3.jpeg";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import NewProductContainer from "./components/NewProductContainer/NewProductContainer";
+import Inicio from "./components/Inicio/Inicio";
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 
 function App() {
   return (
-    <Layout>
-      <main className="main">
-        <section className="hero">
-          <h1>Bienvenidos a Tienda Yo Soy Yo</h1>
-          <p>Productos con estilo, energía y buena vibra 🌸✨</p>
-        </section>
+  <Routes>
 
-        <section className="catalogo">
-          <h2>Nuestros Productos Destacados</h2>
+      <Route element={<Layout />}>
 
-          <ItemListContainer/>
+        <Route
+          path="/"
+          element={<Inicio />}
+        />
 
-         {/*  */}
-        </section>
-        <section>
-           <NewProductContainer />
-    
-        </section>
-      </main>
-    </Layout>
+        <Route
+          path="/producto/:id"
+          element={<ProductoDetalle />}
+        />
+
+      </Route>
+
+    </Routes>
+
   );
 }
 

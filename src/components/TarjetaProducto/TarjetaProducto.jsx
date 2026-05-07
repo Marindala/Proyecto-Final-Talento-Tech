@@ -1,6 +1,7 @@
 //import { ItemList } from "../ItemList/Itemlist";
 import { useState } from 'react';
 import styles from "./TarjetaProducto.module.css";
+import { Link } from "react-router-dom";
 
 function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
   const [cantidad, setCantidad] = useState(0);
@@ -24,7 +25,10 @@ const decrementar = () => {
     alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
   }
   return (
-    <div className={styles.card}>
+    <Link
+  to={`/producto/${id}`}
+  className={styles.card}
+>
       <img className={styles.imagen} src={imagen} alt={nombre} />
       <h3 className={styles.nombre}>{nombre}</h3>
       <p className={styles.precio}>{precio}</p>
@@ -45,7 +49,7 @@ const decrementar = () => {
                 > {esFavorito ? '⭐' : '☆'}
             </span>
           </div>
-    </div>
+    </Link>
   );
 }
 
