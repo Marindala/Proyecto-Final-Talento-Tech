@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FormularioProducto } from '../ProductForm.jsx/ProductForm';
+import { ProductForm } from '../ProductForm.jsx/ProductForm';
 
 function NewProductContainer() {
     // 1. Guarda los datos en el estado
@@ -96,7 +96,7 @@ function NewProductContainer() {
 
     // 3. Conecta la lógica con la vista
     return (
-        <FormularioProducto
+        <ProductForm
             datosForm={datosForm}
             manejarCambio={manejarCambio}
             manejarEnvio={handleFormSubmit}

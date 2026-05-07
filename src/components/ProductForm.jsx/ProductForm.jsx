@@ -1,6 +1,6 @@
 //Recibe los datos y las funciones por props.
 import styles from "./ProductForm.module.css"
-export function FormularioProducto({ datosForm,
+export function ProductForm({ datosForm,
     manejarCambio,
     handleFormSubmit,
     manejarCambioImagen, loading }) {
@@ -69,7 +69,7 @@ export function FormularioProducto({ datosForm,
 
                 />
             </div>
-            <button type="submit">Guardar Producto</button>
+            <button type="submit" disabled={loading}> {loading ? 'Subiendo...' : 'Guardar Producto'}</button>
         </form>
     );
 }
