@@ -1,8 +1,9 @@
 //Recibe los datos y las funciones por props.
+import styles from "./FormularioProducto.module.css";
 export function FormularioProducto({ datosForm,
     manejarCambio,
     manejarEnvio,
-    manejarCambioImagen }) {
+    manejarCambioImagen, loading }) {
 
     const formStyle = {
         display: 'flex',
@@ -14,6 +15,10 @@ export function FormularioProducto({ datosForm,
         borderRadius: '8px',
         gap: '16px'
     };
+
+     if (loading) {
+    return <div className={styles.loader}></div>;
+  }
     return (
         <form style={formStyle} onSubmit={manejarEnvio}>
             <h3>Agregar Nuevo Producto</h3>

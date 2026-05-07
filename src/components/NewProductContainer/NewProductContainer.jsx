@@ -44,25 +44,25 @@ function NewProductContainer() {
 
         try {
             console.log("Subiendo imagen a Imgbb...");
-            const respuestaImgbb = await
-                fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+            const respuestaImgbb = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, 
+                {
                     method: 'POST',
                     body: formData,
                 });
-            const imgbbData = await respuesta.json();
+            const imgbbData = await respuestaImgbb.json();
             /* const urlImagen = imgbbData.data.url;
 
             const productoCompleto = { ...datosForm, urlImagen: urlImagen };
             console.log('Producto listo para enviar:', productoCompleto);
         }; */
-            if (datosImgbb.success) {
-                console.log("Imagen subida con éxito. URL:", datosImgbb.data.url);
+            if (imgbbData.success) {
+                console.log("Imagen subida con éxito. URL:", imgbbData.data.url);
                 // Unimos la URL de la imagen con el resto de los datos del
-                formulario
+                //formulario
                 const productoCompleto = {
                     ...datosForm,
                     // Agregamos la URL obtenida
-                    urlImagen: datosImgbb.data.url
+                    urlImagen: imgbbData.data.url
                 };
                 // Por el momento hacemos un console.log
                 console.log('Enviando los siguientes datos COMPLETOS a la API:',
