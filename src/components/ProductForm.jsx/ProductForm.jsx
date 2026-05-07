@@ -16,11 +16,12 @@ export function ProductForm({ datosForm,
         gap: '16px'
     };
 
-     if (loading) {
-    return <div className={styles.loader}></div>;
-  }
+    /*     if (loading) {
+       return <div className={styles.loader}></div>;
+     } */
     return (
         <form style={formStyle} onSubmit={handleFormSubmit}>
+            {loading && <div className={styles.loader}></div>}
             <h3>Agregar Nuevo Producto</h3>
             <div>
                 <label>Nombre del Producto:</label>

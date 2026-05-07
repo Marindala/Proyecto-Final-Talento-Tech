@@ -99,7 +99,7 @@ function NewProductContainer() {
         <ProductForm
             datosForm={datosForm}
             manejarCambio={manejarCambio}
-            manejarEnvio={handleFormSubmit}
+            handleFormSubmit={handleFormSubmit}
             manejarCambioImagen={manejarCambioImagen}
             loading={loading}
         />
