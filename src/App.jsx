@@ -19,29 +19,9 @@ function App() {
         <section className="catalogo">
           <h2>Nuestros Productos Destacados</h2>
 
-          <div className="gridProductos">
-            <TarjetaProducto
-              imagen={image1}
-              nombre="Buzo Buche Lanilla Argentina"
-              precio="$35000"
-              stock={10}
-            />
+          <ItemListContainer/>
 
-            <TarjetaProducto
-              imagen={image2}
-              nombre="Buzo Buche Lanilla Árbol"
-              precio="$35000"
-              stock={10}
-            />
-
-            <TarjetaProducto
-              imagen={image3}
-              nombre="Buzo Buche de Lanilla Corazón"
-              precio="$35000"
-              stock={10}
-              
-            />
-          </div>
+         {/*  */}
         </section>
         <section>
            <NewProductContainer />

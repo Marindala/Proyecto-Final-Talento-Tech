@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import styles from "./TarjetaProducto.module.css";
 
-function TarjetaProducto({ imagen, nombre, precio, stock }) {
+function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setesFavorito] = useState(false)
 
