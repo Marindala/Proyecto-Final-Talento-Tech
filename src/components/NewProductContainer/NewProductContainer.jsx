@@ -44,7 +44,7 @@ function NewProductContainer() {
 
         try {
             console.log("Subiendo imagen a Imgbb...");
-            const respuestaImgbb = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, 
+            const respuestaImgbb = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,
                 {
                     method: 'POST',
                     body: formData,
@@ -59,6 +59,9 @@ function NewProductContainer() {
                 console.log("Imagen subida con éxito. URL:", imgbbData.data.url);
                 // Unimos la URL de la imagen con el resto de los datos del
                 //formulario
+                alert("Imagen subida con éxito ✅");
+
+
                 const productoCompleto = {
                     ...datosForm,
                     // Agregamos la URL obtenida
@@ -67,6 +70,16 @@ function NewProductContainer() {
                 // Por el momento hacemos un console.log
                 console.log('Enviando los siguientes datos COMPLETOS a la API:',
                     productoCompleto);
+                // Limpiar formulario
+                setDatosForm({
+                    nombre: '',
+                    precio: '',
+                    stock: ''
+                });
+
+                // Limpiar imagen seleccionada
+                setImagenFile(null);
+
             } else {
                 throw new Error('La subida de la imagen a Imgbb falló.');
             }
@@ -88,7 +101,7 @@ function NewProductContainer() {
             manejarCambio={manejarCambio}
             manejarEnvio={manejarEnvio}
             manejarCambioImagen={manejarCambioImagen}
-            loading={loading} 
+            loading={loading}
         />
     );
 }
