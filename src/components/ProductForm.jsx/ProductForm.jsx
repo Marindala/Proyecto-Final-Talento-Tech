@@ -1,5 +1,5 @@
 //Recibe los datos y las funciones por props.
-import styles from "./FormularioProducto.module.css";
+import styles from "./ProductForm.module.css"
 export function FormularioProducto({ datosForm,
     manejarCambio,
     handleFormSubmit,

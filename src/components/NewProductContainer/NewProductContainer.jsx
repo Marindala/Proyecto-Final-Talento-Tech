@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FormularioProducto } from '../FormularioProducto/FormularioProducto';
+import { FormularioProducto } from '../ProductForm.jsx/ProductForm';
 
 function NewProductContainer() {
     // 1. Guarda los datos en el estado
