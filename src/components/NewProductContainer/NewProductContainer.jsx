@@ -28,7 +28,7 @@ function NewProductContainer() {
     };
 
 
-    const manejarEnvio = async (evento) => {
+    const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         // Validamos que el usuario haya seleccionado una imagen
         if (!imagenFile) {
@@ -99,7 +99,7 @@ function NewProductContainer() {
         <FormularioProducto
             datosForm={datosForm}
             manejarCambio={manejarCambio}
-            manejarEnvio={manejarEnvio}
+            manejarEnvio={handleFormSubmit}
             manejarCambioImagen={manejarCambioImagen}
             loading={loading}
         />

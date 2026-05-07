@@ -2,7 +2,7 @@
 import styles from "./FormularioProducto.module.css";
 export function FormularioProducto({ datosForm,
     manejarCambio,
-    manejarEnvio,
+    handleFormSubmit,
     manejarCambioImagen, loading }) {
 
     const formStyle = {
@@ -20,7 +20,7 @@ export function FormularioProducto({ datosForm,
     return <div className={styles.loader}></div>;
   }
     return (
-        <form style={formStyle} onSubmit={manejarEnvio}>
+        <form style={formStyle} onSubmit={handleFormSubmit}>
             <h3>Agregar Nuevo Producto</h3>
             <div>
                 <label>Nombre del Producto:</label>
