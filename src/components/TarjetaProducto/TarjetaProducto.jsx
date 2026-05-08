@@ -14,41 +14,41 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
                si prev era true, devuelve false */
 
   }
-const incrementar = () => {
-  setCantidad(prev => (prev < stock ? prev + 1 : prev));
-};
+  const incrementar = () => {
+    setCantidad(prev => (prev < stock ? prev + 1 : prev));
+  };
 
-const decrementar = () => {
-  setCantidad(prev => (prev > 0 ? prev - 1 : prev));
-};
+  const decrementar = () => {
+    setCantidad(prev => (prev > 0 ? prev - 1 : prev));
+  };
   const agregarAlCarrito = () => {
     alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
   }
   return (
     <Link
-  to={`/producto/${id}`}
-  className={styles.card}
->
+      to={`/producto/${id}`}
+      className={styles.card}
+    >
       <img className={styles.imagen} src={imagen} alt={nombre} />
       <h3 className={styles.nombre}>{nombre}</h3>
       <p className={styles.precio}>{precio}</p>
       <p>Stock disponible: {stock}</p>
-            <div style={{
-                display: 'flex', alignItems: 'center', justifyContent:
-                    'center', margin: '10px 0'
-            }}>
-                <button onClick={decrementar}>-</button>
-                <p style={{ margin: '0 10px' }}>{cantidad}</p>
-                <button onClick={incrementar}>+</button>
-            </div>
-             <div className={styles.izquierda}></div>
-            <div className={styles.contentBoton}>
-      <button className={styles.boton}  onClick={agregarAlCarrito}>Agregar al carrito</button>
-      <span onClick={marcarComoFavorito}
-                className={styles.favorito}   
-                > {esFavorito ? '⭐' : '☆'}
-            </span>
-          </div>
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent:
+          'center', margin: '10px 0'
+      }}>
+        <button onClick={decrementar}>-</button>
+        <p style={{ margin: '0 10px' }}>{cantidad}</p>
+        <button onClick={incrementar}>+</button>
+      </div>
+      <div className={styles.izquierda}></div>
+      <div className={styles.contentBoton}>
+        <button className={styles.boton} onClick={agregarAlCarrito}>Agregar al carrito</button>
+        <span onClick={marcarComoFavorito}
+          className={styles.favorito}
+        > {esFavorito ? '⭐' : '☆'}
+        </span>
+      </div>
     </Link>
   );
 }
