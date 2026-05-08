@@ -25,11 +25,15 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
     alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
   }
   return (
-    <Link
-      to={`/producto/${id}`}
-      className={styles.card}
-    >
-      <img className={styles.imagen} src={imagen} alt={nombre} />
+    /*  <Link
+       to={`/producto/${id}`}
+       className={styles.card}
+     > */
+    <div className={styles.card}>
+      <Link to={`/producto/${id}`} className={styles.detalle}>
+        <img className={styles.imagen} src={imagen} alt={nombre} />
+      </Link>
+
       <h3 className={styles.nombre}>{nombre}</h3>
       <p className={styles.precio}>{precio}</p>
       <p>Stock disponible: {stock}</p>
@@ -49,7 +53,7 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
         > {esFavorito ? '⭐' : '☆'}
         </span>
       </div>
-    </Link>
+    </div>
   );
 }
 
