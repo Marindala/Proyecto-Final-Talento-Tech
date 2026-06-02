@@ -1,18 +1,46 @@
 import styles from "./Header.module.css"
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import logo from "../../assets/logo.png"
+
 function Header() {
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className={styles.header}>
-      <h2 className={styles.logo}>Tienda Yo Soy Yo</h2>
+      <Link to="/" className={styles.brand}>
+        <img
+          src={logo}
+          alt="Yo Soy Yo"
+          className={styles.logoImage}
+        />
 
-      <nav className={styles.nav}>
+        <div className={styles.brandText}>
+          <span className={styles.logoTitle}>
+             Yo Soy Yo
+          </span>
+
+        {/*   <span className={styles.logoSubtitle}>
+            Vestir con conciencia
+          </span> */}
+        </div>
+      </Link>
+
+      <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""
+        }`}>
         <Link to="/">Inicio</Link>
         <Link to="/prod">Productos</Link>
         <Link to="/contact">Contacto</Link>
-        <Link to="/cart">Carrito</Link>
+        <Link to="/cart"> 🛒</Link>
 
       </nav>
+
+      <button className={styles.hamburger}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? "✕" : "☰"}
+      </button>
     </header>
   )
 }

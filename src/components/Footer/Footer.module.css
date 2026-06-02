@@ -1,7 +1,47 @@
-.footer {
+/* .footer {
   background-color: #773f5f;
   padding: 15px;
   text-align: center;
   color: #f6b6a3;
-  margin-top: 40px;
+  margin-top: 0;
+ /*  margin-top: 40px; */
+
+ .footer {
+  background-color: var(--cream);
+
+  border-top: 1px solid rgba(67, 53, 45, 0.08);
+
+  text-align: center;
+
+  padding: 50px 20px;
+}
+
+.footer h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 2rem;
+
+  font-weight: 500;
+
+  color: var(--text);
+
+  margin-bottom: 8px;
+}
+
+.slogan {
+  color: var(--taupe);
+
+  letter-spacing: 2px;
+
+  /* text-transform: uppercase; */
+
+  font-size: 1rem;
+
+  margin-bottom: 30px;
+}
+
+.copy {
+  color: var(--taupe);
+
+  font-size: 0.9rem;
 }

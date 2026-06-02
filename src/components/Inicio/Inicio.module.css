@@ -1,6 +1,7 @@
-/* .main {
-  padding: 40px;
-} */
+ .main {
+   width: 100%;
+  overflow: hidden;
+}  
 
 /* .hero {
   background-color: #b15976;
@@ -16,38 +17,122 @@
 
   background-image: url("/images/fondo.jpg");
 
-  background-size: cover;
-  background-position: center;
+ /*  background-size: contain;  */ 
+    /* background-position: center; */
+  background-size: cover; 
 
+  background-position: center center;
+ 
+/*  background-size:auto; */
+  background-repeat: no-repeat; 
+ /*  background-position: right center; */
   display: flex;
-  justify-content: center;
+  /*  justify-content: center; */
+ /*  justify-content: flex-start; */
   align-items: center;
+  padding-left: 5%;
+  background-position: 100% 10%;
 
-  position: relative;
+ /*  position: relative; */
+ /* background-position: center top; */
 }
 
 .overlay {
-  background: rgba(255,255,255,0.25);
+ /*  background: rgba(75, 24, 24, 0.295); */
+   background: rgba(67, 53, 45, 0.35);
 
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+
+ /*  backdrop-filter: blur(10px); */
 
   padding: 60px;
 
   border-radius: 20px;
 
-  text-align: center;
+  text-align: left;
 
-  max-width: 800px;
+  max-width: 550px;
+
+  /* text-align: center;
+
+  max-width: 650px; */
 }
 
-.overlay h1 {
+/* .overlay h1 {
   font-size: clamp(2rem, 4vw, 8rem);
 
-  color: #542f52;
+  color: #43352d;
 
   letter-spacing: 4px;
 
   margin-bottom: 20px;
+} */
+
+.overlay h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(3rem, 6vw, 6rem);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  color: var(--text);
+
+  margin-bottom: 20px;
+}
+
+.overlay p {
+  max-width: 500px;
+
+  margin: 0 auto 30px;
+
+  font-size: 1.1rem;
+
+  line-height: 1.8;
+
+  color: var(--text);
+}
+
+.overlay button {
+  padding: 14px 32px;
+
+  border: none;
+
+  background-color: var(--earth);
+
+  color: white;
+
+  font-size: 0.95rem;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  transition: 0.3s ease;
+}
+
+.overlay button:hover {
+  background-color: var(--taupe);
+
+  transform: translateY(-2px);
+}
+
+.badge {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  font-size: 2rem;
+
+  letter-spacing: 3px;
+
+  color: var(--taupe);
+
+  text-transform: uppercase;
 }
 
 /* .hero h1 {
@@ -68,10 +153,10 @@
 }
 
 .gridProductos {
- /*  display: grid;
+  /*  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px; */
-   display: flex; 
+  display: flex;
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;

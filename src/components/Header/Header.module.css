@@ -1,4 +1,4 @@
-.header {
+/* .header {
   background-color: #542f52;
   padding: 20px 40px;
   display: flex;
@@ -26,4 +26,184 @@
 
 .nav a:hover {
   color: #f38394;
+} */
+
+.header {
+  height: 100px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 60px;
+
+  background-color: var(--bg);
+
+  border-bottom: 1px solid rgba(67, 53, 45, 0.08);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 0 20px;
+    height: 80px;
+  }
+
+}
+
+.logo {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  color: var(--text);
+
+  font-size: 1.10rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+
+  background-color: var(--accent);
+
+  transition: 0.3s ease;
+
+  transform: translateX(-50%);
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: sepia(40%) saturate(70%);
+}
+
+.brandText {
+  font-family: "Cormorant Garamond", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*  font-size: 2rem;
+  letter-spacing: 2px;
+  font-weight: 500; */
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logoTitle {
+  font-family: "Cormorant Garamond", serif;
+  margin-left: 1.2rem;
+
+  font-size: 1.8rem;
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+.logoSubtitle {
+  margin-top: 4px;
+
+  font-size: 1rem;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--taupe);
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+
+  .brandText {
+    display: none;
+  }
+
+  .logoImage {
+    width: 50px;
+    height: 50px;
+  }
+
+}
+.hamburger {
+  display: none;
+
+  border: none;
+  background: transparent;
+
+  font-size: 1.8rem;
+
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .navOpen {
+    display: flex;
+
+    position: absolute;
+    top: 90px;
+    left: 0;
+
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 30px 0;
+
+    background-color: var(--bg);
+
+    border-top: 1px solid rgba(67, 53, 45, 0.08);
+  }
 }
