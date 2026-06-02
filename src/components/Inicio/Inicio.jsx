@@ -6,7 +6,7 @@ function Inicio() {
   return (
     <main className={styles.main}>
 
-      <section className={styles.hero}>
+     {/*  <section className={styles.hero}>
         <h1>Bienvenidos a Tienda Yo Soy Yo</h1>
 
         <p>
@@ -22,8 +22,19 @@ function Inicio() {
 
       <section>
         <NewProductContainer />
-      </section>
+      </section> */}
+<section className={styles.hero}>
+  <div className={styles.overlay}>
+    <h1>YO SOY YO</h1>
 
+    <p>
+      Más que ropa.
+      Una forma de expresar tu esencia.
+    </p>
+
+    <button>Descubrir Colección</button>
+  </div>
+</section>
     </main>
   );
 }

@@ -1,20 +1,59 @@
-.main {
+/* .main {
   padding: 40px;
-}
+} */
 
-.hero {
+/* .hero {
   background-color: #b15976;
   padding: 40px;
   border-radius: 20px;
   text-align: center;
   color: white;
   margin-bottom: 40px;
+} */
+
+.hero {
+  min-height: 100vh;
+
+  background-image: url("/images/fondo.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
 }
 
-.hero h1 {
+.overlay {
+  background: rgba(255,255,255,0.25);
+
+  backdrop-filter: blur(8px);
+
+  padding: 60px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  max-width: 800px;
+}
+
+.overlay h1 {
+  font-size: clamp(2rem, 4vw, 8rem);
+
+  color: #542f52;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 20px;
+}
+
+/* .hero h1 {
   margin: 0;
   font-size: 36px;
-}
+} */
 
 .hero p {
   margin-top: 10px;
