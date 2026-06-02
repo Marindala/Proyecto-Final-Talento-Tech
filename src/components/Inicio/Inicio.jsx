@@ -27,16 +27,14 @@ function Inicio() {
       </section> */}
       <section className={styles.hero}>
         <div className={styles.overlay}>
-          <span className={styles.badge}>
-            NUEVA COLECCIÓN
-          </span>
 
-          <h1>Vestir con conciencia</h1>
 
-          <p>
+          {/*   <h1>Vestir con conciencia</h1> */}
+
+          {/*    <p>
             Prendas con intención,
             inspiradas en la autenticidad y la conexión interior.
-          </p>
+          </p> */}
 
           <button onClick={() => navigate("/prod")}>Explorar Colección</button>
         </div>

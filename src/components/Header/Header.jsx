@@ -1,7 +1,7 @@
 import styles from "./Header.module.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import logo from "../../assets/logo.png"
+import logo from "../../../public/image/Brand/logo2.png"
 
 function Header() {
 
@@ -18,7 +18,7 @@ function Header() {
 
         <div className={styles.brandText}>
           <span className={styles.logoTitle}>
-             Yo Soy Yo
+             Vestir con Conciencia
           </span>
 
         {/*   <span className={styles.logoSubtitle}>
