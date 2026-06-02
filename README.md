@@ -1,16 +1,51 @@
-# React + Vite
+# 🌸 Yo Soy Yo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Vístete con intención.
+> Cada diseño es un recordatorio de quién eliges ser.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Sobre la marca
 
-## React Compiler
+Yo Soy Yo es una propuesta de indumentaria inspirada en la
+metafísica, las afirmaciones positivas, los mandalas y el
+desarrollo personal.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Cada prenda busca transmitir un mensaje que acompañe a quien la usa
+en su día a día.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎨 Paleta Elegida
+
+| Color | Hex |
+|---------|---------|
+| 🟣 | #542f52 |
+| 🌺 | #773f5f |
+| 🌷 | #b15976 |
+| 🌸 | #f38394 |
+| 🌼 | #f6b6a3 |
+
+---
+
+## 👕 Productos
+
+- Remeras con afirmaciones
+- Vestidos sublimados
+- Musculosas
+- Diseños exclusivos
+- Mandalas y arte consciente
+
+---
+
+## 🌿 Filosofía
+
+Creemos que las palabras, los símbolos y la intención pueden formar
+parte de nuestra experiencia cotidiana.
+
+Por eso diseñamos prendas que invitan a recordar quién eres y qué
+deseas expresar al mundo.
+
+---
+
+### 💖 Yo Soy Yo
