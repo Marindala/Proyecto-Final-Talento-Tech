@@ -13,12 +13,19 @@
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
+   /* background-attachment: fixed; ver */
 
    display: flex;
    justify-content: center;
    align-items: center;
    margin-bottom: 0%;
  }
+
+ @media (max-width: 768px) {
+  .hero {
+    background-image: url("/image/Brand/Hero-mobile.png");
+  }
+}
 
  .overlay {
   
@@ -58,6 +65,12 @@
 
    transform: translateY(-2px);
  }
+
+ @media (max-width: 768px) {
+  .overlay button {
+    margin-top: 180px;
+  }
+}
 
  .badge {
    display: flex;
