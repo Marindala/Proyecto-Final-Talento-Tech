@@ -1,10 +1,23 @@
 import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 import NewProductContainer from "../../components/NewProductContainer/NewProductContainer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { useState, useEffect } from "react";
 import styles from "./Inicio.module.css";
 
 function Inicio() {
   const navigate = useNavigate();
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <main className={styles.main}>
 
@@ -35,8 +48,9 @@ function Inicio() {
             Prendas con intención,
             inspiradas en la autenticidad y la conexión interior.
           </p> */}
-
-          <button onClick={() => navigate("/prod")}>Explorar Colección</button>
+          {showButton && (
+            <button className={styles.floatingButton} onClick={() => navigate("/prod")}>Explorar Colección</button>
+          )}
         </div>
       </section>
     </main>
