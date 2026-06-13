@@ -10,24 +10,23 @@ import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
-  <Routes>
+   <Routes>
 
-      <Route element={<Layout />}>
+  <Route element={<Layout />}>
 
-        <Route
-          path="/"
-          element={<Inicio />}
-        />
+    <Route
+      path="/"
+      element={<Inicio />}
+    />
 
-      {/*   <Route
-          path="/producto/:id"
-          element={<ProductoDetalle />}
-        /> */}
+    <Route
+      path="/cart"
+      element={<Cart />}
+    />
 
-      </Route>
-        <Route path="/carrito" element={<Cart />} />
+  </Route>
 
-    </Routes>
+</Routes>
 
   );
 }
