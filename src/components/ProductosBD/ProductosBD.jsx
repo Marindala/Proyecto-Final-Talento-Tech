@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./ProductosBD.module.css";
+import TarjetaProducto from '../TarjetaProducto/TarjetaProducto.jsx';
 // Importaciones clave de Firebase
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/config.js';
@@ -11,17 +12,22 @@ const ProductosBD = () => {
         const productosDB = collection(db, "productos nacionales")
         console.log(productos);
         getDocs(productosDB).then((resp) => {
-            setProductos(
-                resp.docs.map((doc) => {
-                    return { ...doc.data(), id: doc.id }
-                })
-            );
+             setProductos(
+            resp.docs.map((doc) => ({
+                id: doc.id,
+                nombre: doc.data().Nombre,
+                precio: Number(doc.data().Precio),
+                imagen: doc.data().Imagen,
+                stock: doc.data().Stock,
+                categoria: doc.data().Categoria
+            }))
+        );
         })
     }, []); // El array vacío asegura que este efecto se ejecute solo una vez
     return (
         <div>
             <h1 className={styles.subtitulo}>Productos</h1>
-            <div className="lista-productos">
+            <div className={styles.listaProductos}>
                 {/* 5. Mapeamos el estado `productos` para renderizar cada
 uno */}
                 {productos.map(prod => {
@@ -29,15 +35,15 @@ uno */}
 
                     return (
                         <div className={styles.productos} key={prod.id}>
-                            <img
-                                src={prod.Imagen}
-                                alt={prod.Nombre}
-                                style={{ width: '100px' }}
+                            <TarjetaProducto
+                                key={prod.id}
+                                id={prod.id}
+                                nombre={prod.nombre}
+                                precio={prod.precio}
+                                imagen={prod.imagen}
+                                stock={prod.stock}
+                                categoria={prod.categoria}
                             />
-                            <h3>{prod.Nombre}</h3>
-                            <p>Categoría: {prod.Categoria}</p>
-                            <p>Precio: ${prod.Precio}</p>
-                            <p>Stock: {prod.Stock} unidades</p>
                             <hr />
                         </div>
                     );

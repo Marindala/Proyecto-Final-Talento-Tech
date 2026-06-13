@@ -11,30 +11,30 @@ import ProductosBD from "./components/ProductosBD/ProductosBD";
 
 function App() {
   return (
-   <Routes>
+    <Routes>
 
-  <Route element={<Layout />}>
+      <Route element={<Layout />}>
 
-    <Route
-      path="/"
-      element={<Inicio />}
-    
-    />
+        <Route
+          path="/"
+          element={<Inicio />}
 
-      <Route
-      path="/products"
-      element={<ProductosBD
-          Mensaje={"Productos"} />} 
-    />
+        />
 
-    <Route
-      path="/cart"
-      element={<Cart />}
-    />
+        <Route
+          path="/products"
+          element={<ProductosBD
+            Mensaje={"Productos"} />}
+        />
 
-  </Route>
+        <Route
+          path="/cart"
+          element={<Cart />}
+        />
 
-</Routes>
+      </Route>
+
+    </Routes>
 
   );
 }

@@ -7,6 +7,7 @@ export const Cart = () => {
     // 2. Obtenemos el estado 'cart' y las funciones que necesitemos del
     //contexto
     const { cart, clearCart, getCartTotal } = useCart();
+    console.log(cart);
     // Por ahora, este componente solo mostrará un mensaje.
     // Más adelante, consumirá los datos de nuestro contexto.
 
@@ -60,7 +61,7 @@ export const Cart = () => {
                 </button>
 
                 <Link
-                    to="/productos"
+                    to="/products"
                     className={styles.button}
                 >
                     Ver Catálogo

@@ -2,10 +2,12 @@
 import { useState } from 'react';
 import styles from "./TarjetaProducto.module.css";
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setesFavorito] = useState(false)
+  const { addToCart } = useCart();
 
   const marcarComoFavorito = () => {
     setesFavorito((prev) => !prev);
@@ -21,8 +23,29 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
   const decrementar = () => {
     setCantidad(prev => (prev > 0 ? prev - 1 : prev));
   };
+  /*  const agregarAlCarrito = () => {
+     alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
+   } */
+
+
   const agregarAlCarrito = () => {
-    alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
+
+    if (cantidad === 0) {
+      alert("Seleccioná al menos una unidad");
+      return;
+    }
+
+    addToCart(
+      {
+        id,
+        nombre,
+        precio,
+        imagen
+      },
+      cantidad
+    );
+
+    alert(`Agregaste ${cantidad} unidades de ${nombre}`);
   }
   return (
     /*  <Link
@@ -30,12 +53,14 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
        className={styles.card}
      > */
     <div className={styles.card}>
-      <Link to={`/producto/${id}`} className={styles.detalle}>
+      <Link to={`/producto/${id}`} className={styles.detalle}> {/* detalle de tarjeta */}
         <img className={styles.imagen} src={imagen} alt={nombre} />
       </Link>
 
       <h2 className={styles.nombre}>{nombre}</h2>
-      <p className={styles.precio}>{precio}</p>
+      <p className={styles.precio}>
+        ${precio.toLocaleString("es-AR")}
+      </p>
       <p>Stock disponible: {stock}</p>
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent:

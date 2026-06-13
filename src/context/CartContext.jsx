@@ -49,7 +49,7 @@ return cart.some(item => item.id === productId);
     // NUEVA FUNCIÓN: Obtener la cantidad de un item específico
     const getCantidadActual = (productId) => {
         const item = cart.find(item => item.id === productId);
-        return item ? item.cantidad : 0;
+        return item ? item.quantity : 0;
     }
 
     return (
