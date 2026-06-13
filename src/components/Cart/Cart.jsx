@@ -18,7 +18,7 @@ export const Cart = () => {
                 <p>Agrega productos para continuar la compra.</p>
 
                 <Link
-                    to="/productos"
+                    to="/products"
                     className={styles.catalogButton}
                 >
                     Ver Catálogo

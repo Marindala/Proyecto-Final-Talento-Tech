@@ -34,16 +34,32 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
         <img className={styles.imagen} src={imagen} alt={nombre} />
       </Link>
 
-      <h3 className={styles.nombre}>{nombre}</h3>
+      <h2 className={styles.nombre}>{nombre}</h2>
       <p className={styles.precio}>{precio}</p>
       <p>Stock disponible: {stock}</p>
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent:
           'center', margin: '10px 0'
       }}>
-        <button onClick={decrementar}>-</button>
-        <p style={{ margin: '0 10px' }}>{cantidad}</p>
-        <button onClick={incrementar}>+</button>
+        <div className={styles.contador}>
+          <button
+            className={styles.contadorBtn}
+            onClick={decrementar}
+          >
+            −
+          </button>
+
+          <span className={styles.cantidad}>
+            {cantidad}
+          </span>
+
+          <button
+            className={styles.contadorBtn}
+            onClick={incrementar}
+          >
+            +
+          </button>
+        </div>
       </div>
       <div className={styles.izquierda}></div>
       <div className={styles.contentBoton}>

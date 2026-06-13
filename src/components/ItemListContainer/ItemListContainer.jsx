@@ -6,7 +6,7 @@ import styles from "./ItemListContainer.module.css";
 
 export function ItemListContainer({ Mensaje }) {
 
- const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
 
@@ -16,14 +16,15 @@ export function ItemListContainer({ Mensaje }) {
       .catch((error) => console.log(error));
 
   }, []);
-  
-return (
-<div>
-<h2  className={styles.subtitulo}>{Mensaje}</h2>
-<div className={styles.productos}>
-<ItemList  productos={productos} />
-</div>
-</div>
-);}
+
+  return (
+    <div>
+      <h2 className={styles.subtitulo}>{Mensaje}</h2>
+      <div className={styles.productos}>
+        <ItemList productos={productos} />
+      </div>
+    </div>
+  );
+}
 
 export default ItemListContainer;

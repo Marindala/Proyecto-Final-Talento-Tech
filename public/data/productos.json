@@ -4,7 +4,7 @@
     "nombre": "Buzo Buche Lanilla Argentina",
     "precio": 35000,
     "stock": 10,
-    "imagen": "/image/image1.jpeg",
+    "imagen": "/image/Buzos/image1.jpeg",
     "descripcion": "Buzo cómodo y abrigado con diseño Argentina."
   },
   {
@@ -12,7 +12,7 @@
     "nombre": "Buzo Buche Lanilla Árbol",
     "precio": 35000,
     "stock": 10,
-    "imagen": "/image/image2.jpeg",
+    "imagen": "/image/Buzos/image2.jpeg",
     "descripcion": "Buzo de lanilla con diseño árbol energético."
   },
   {
@@ -20,7 +20,7 @@
     "nombre": "Buzo Buche Lanilla Corazón",
     "precio": 35000,
     "stock": 10,
-    "imagen": "/image/image3.jpeg",
+    "imagen": "/images/Buzos/image3.jpeg",
     "descripcion": "Diseño corazón con estilo espiritual y moderno."
   }
 ]

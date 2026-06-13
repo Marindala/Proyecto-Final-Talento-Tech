@@ -1,8 +1,9 @@
 import TarjetaProducto  from "../TarjetaProducto/TarjetaProducto";
+import styles from "./ItemList.module.css";
 
 export function ItemList({ productos }) {
 return (
-<div style={{ display: 'flex', gap: '20px' }}>
+<div className={styles.producto}>
 {productos.map(prod => (
 <TarjetaProducto key={prod.id} {...prod} />
 ))}

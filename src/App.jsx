@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 //import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 
 function App() {
@@ -17,6 +18,13 @@ function App() {
     <Route
       path="/"
       element={<Inicio />}
+    
+    />
+
+      <Route
+      path="/products"
+      element={<ItemListContainer
+          Mensaje={"Productos"} />} 
     />
 
     <Route

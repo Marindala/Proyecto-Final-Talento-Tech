@@ -16,8 +16,8 @@ function Navbar({ menuOpen, setMenuOpen }) {
         }  onClick={() => setMenuOpen(false)}>
 
             <Link to="/">Inicio</Link>
-            <Link to="/prod">Productos</Link>
-            <Link to="/history">Sobre Yo Soy Yo</Link>
+            <Link to="/products">Productos</Link>
+            <Link to="/us">Nosotros</Link>
             <Link to="/contact">Contacto</Link>
             <Link to="/cart"> 🛒</Link>
 
