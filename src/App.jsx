@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ProductosBD from "./components/ProductosBD/ProductosBD";
 //import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 
       <Route
       path="/products"
-      element={<ItemListContainer
+      element={<ProductosBD
           Mensaje={"Productos"} />} 
     />
 
