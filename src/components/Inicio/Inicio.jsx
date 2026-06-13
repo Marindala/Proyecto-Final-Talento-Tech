@@ -49,7 +49,7 @@ function Inicio() {
             inspiradas en la autenticidad y la conexión interior.
           </p> */}
           {showButton && (
-            <button className={styles.floatingButton} onClick={() => navigate("/prod")}>Explorar Colección</button>
+            <button className={styles.floatingButton} onClick={() => navigate("/products")}>Explorar Colección</button>
           )}
         </div>
       </section>
