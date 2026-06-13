@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from "./ProductosBD.module.css";
 // Importaciones clave de Firebase
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/config.js';
@@ -19,7 +20,7 @@ const ProductosBD = () => {
     }, []); // El array vacío asegura que este efecto se ejecute solo una vez
     return (
         <div>
-            <h1>Productos Nacionales</h1>
+            <h1 className={styles.subtitulo}>Productos</h1>
             <div className="lista-productos">
                 {/* 5. Mapeamos el estado `productos` para renderizar cada
 uno */}
@@ -27,7 +28,7 @@ uno */}
                     console.log(prod);
 
                     return (
-                        <div key={prod.id}>
+                        <div className={styles.productos} key={prod.id}>
                             <img
                                 src={prod.Imagen}
                                 alt={prod.Nombre}
