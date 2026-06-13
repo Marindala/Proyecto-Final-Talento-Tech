@@ -27,7 +27,7 @@ function Header() {
           </span> */}
         </div>
       </Link>
-      <Navbar/>
+      <Navbar menuOpen={menuOpen}  setMenuOpen={setMenuOpen}/>
      
 
       <button className={styles.hamburger}
