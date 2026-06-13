@@ -2,6 +2,7 @@ import styles from "./Header.module.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../../../public/image/Brand/logo2.png"
+import Navbar from "../Navbar/Navbar";
 
 function Header() {
 
@@ -26,15 +27,8 @@ function Header() {
           </span> */}
         </div>
       </Link>
-
-      <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""
-        }`}>
-        <Link to="/">Inicio</Link>
-        <Link to="/prod">Productos</Link>
-        <Link to="/contact">Contacto</Link>
-        <Link to="/cart"> 🛒</Link>
-
-      </nav>
+      <Navbar/>
+     
 
       <button className={styles.hamburger}
         onClick={() => setMenuOpen(!menuOpen)}

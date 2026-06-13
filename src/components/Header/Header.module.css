@@ -65,46 +65,7 @@
   color: var(--text);
 }
 
-.nav {
-  display: flex;
-  gap: 2rem;
-}
 
-.nav a {
-  color: var(--text);
-
-  font-size: 1.10rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  position: relative;
-  transition: var(--transition);
-}
-
-.nav a::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  bottom: -6px;
-
-  width: 0;
-  height: 1px;
-
-  background-color: var(--accent);
-
-  transition: 0.3s ease;
-
-  transform: translateX(-50%);
-}
-
-.nav a:hover {
-  color: var(--accent);
-}
-
-.nav a:hover::after {
-  width: 100%;
-}
 
 
 .brand {
@@ -185,27 +146,4 @@
     display: block;
   }
 
-  .nav {
-    display: none;
-  }
-
-  .navOpen {
-    display: flex;
-
-    position: absolute;
-    top: 90px;
-    left: 0;
-
-    width: 100%;
-
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-
-    padding: 30px 0;
-
-    background-color: var(--bg);
-
-    border-top: 1px solid rgba(67, 53, 45, 0.08);
-  }
 }
