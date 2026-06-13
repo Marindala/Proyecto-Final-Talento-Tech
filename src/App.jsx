@@ -5,7 +5,8 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
+import Cart from "./components/Cart/Cart";
+//import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 
 function App() {
   return (
@@ -18,12 +19,13 @@ function App() {
           element={<Inicio />}
         />
 
-        <Route
+      {/*   <Route
           path="/producto/:id"
           element={<ProductoDetalle />}
-        />
+        /> */}
 
       </Route>
+        <Route path="/carrito" element={<Cart />} />
 
     </Routes>
 
