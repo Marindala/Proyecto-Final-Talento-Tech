@@ -30,14 +30,14 @@ export const CartProvider = ({ children }) => {
         setCart([]);
     };
     // NUEVA FUNCIÓN: Eliminar un producto del carrito
-const removeItem = (productId) => {
-const updatedCart = cart.filter(item => item.id !== productId);
-setCart(updatedCart);
-};
-// NUEVA FUNCIÓN: Verificar si un producto ya está en el carrito
-const isInCart = (productId) => {
-return cart.some(item => item.id === productId);
-};
+    const removeItem = (productId) => {
+        const updatedCart = cart.filter(item => item.id !== productId);
+        setCart(updatedCart);
+    };
+    // NUEVA FUNCIÓN: Verificar si un producto ya está en el carrito
+    const isInCart = (productId) => {
+        return cart.some(item => item.id === productId);
+    };
     const getCartQuantity = () => {
         return cart.reduce((acc, item) => acc + item.quantity, 0);
     };
@@ -54,7 +54,7 @@ return cart.some(item => item.id === productId);
 
     return (
         <CartContext.Provider value={{
-            cart, getCantidadActual, addToCart,removeItem, isInCart, clearCart,
+            cart, getCantidadActual, addToCart, removeItem, isInCart, clearCart,
             getCartQuantity, getCartTotal
         }}>
             {children}

@@ -45,9 +45,10 @@ export const Cart = () => {
                     <p>Cantidad: {item.quantity}</p>
                     <p>Precio unitario: ${item.precio}</p>
                     <p>Subtotal: ${item.precio * item.quantity}</p>
+                    
                 </div>
             ))}
-
+            <hr />
             <h3 className={styles.total}>
                 Total a pagar: ${getCartTotal()}
             </h3>
