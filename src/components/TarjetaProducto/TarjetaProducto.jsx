@@ -88,7 +88,7 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
       </div>
       <div className={styles.izquierda}></div>
       <div className={styles.contentBoton}>
-        <button className={styles.boton} onClick={agregarAlCarrito}>Agregar al carrito</button>
+        <button className={styles.boton} onClick={agregarAlCarrito}>Agregar {cantidad} al carrito</button>
         <span onClick={marcarComoFavorito}
           className={styles.favorito}
         > {esFavorito ? '⭐' : '☆'}
