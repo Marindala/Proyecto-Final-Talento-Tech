@@ -53,7 +53,7 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
        className={styles.card}
      > */
     <div className={styles.card}>
-      <Link to={`/producto/${id}`} className={styles.detalle}> {/* detalle de tarjeta */}
+      <Link to={`/producto/${id}`} className={styles.detalle}>  {/* detalle de tarjeta */}
         <img className={styles.imagen} src={imagen} alt={nombre} />
       </Link>
 

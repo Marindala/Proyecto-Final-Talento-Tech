@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import ProductosBD from "./components/ProductosBD/ProductosBD";
-//import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
+import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 
 function App() {
   return (
@@ -24,6 +24,11 @@ function App() {
         <Route
           path="/products"
           element={<ProductosBD
+            Mensaje={"Productos"} />}
+        />
+        <Route
+          path="/producto/:id"
+          element={<ProductoDetalle
             Mensaje={"Productos"} />}
         />
 
