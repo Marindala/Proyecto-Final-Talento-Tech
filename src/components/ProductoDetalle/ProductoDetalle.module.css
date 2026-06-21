@@ -60,3 +60,59 @@
 .boton:hover{
     background:#a9804d;
 }
+
+.cantidadContainer{
+    margin:30px 0;
+}
+
+.cantidadContainer label{
+    display:block;
+    font-size:15px;
+    color:#666;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.cantidadControl{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    border:1px solid #ddd;
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.cantidadControl button{
+    width:45px;
+    height:45px;
+    border:none;
+    background:white;
+    cursor:pointer;
+    font-size:24px;
+    transition:.25s;
+}
+
+.cantidadControl button:hover{
+    background:#f3f3f3;
+}
+
+.cantidadControl input{
+    width:60px;
+    height:45px;
+    border:none;
+    outline:none;
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+    appearance:textfield;
+    -moz-appearance:textfield;
+}
+
+.cantidadControl input::-webkit-inner-spin-button,
+.cantidadControl input::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+}

@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 import { useParams } from "react-router-dom";
 import styles from "./ProductoDetalle.module.css";
+import { useCart } from "../../context/CartContext";
 
 
 function ProductoDetalle() {
@@ -10,6 +11,8 @@ function ProductoDetalle() {
   const { id } = useParams();
 
   const [producto, setProducto] = useState(null);
+  const [cantidad, setCantidad] = useState(0);
+  const { addToCart } = useCart();
 
   useEffect(() => {
 
@@ -41,6 +44,25 @@ function ProductoDetalle() {
   if (!producto) {
     return <h2>Cargando producto...</h2>;
   }
+  const agregarAlCarrito = () => {
+
+    if (cantidad === 0) {
+      alert("Seleccioná al menos una unidad");
+      return;
+    }
+
+    addToCart(
+      {
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        imagen: producto.imagen
+      },
+      cantidad
+    );
+
+    alert(`Agregaste ${cantidad} unidades de ${producto.nombre}`);
+  }
 
   return (
     <div className={styles.container}>
@@ -70,8 +92,40 @@ function ProductoDetalle() {
           Prenda confeccionada con materiales de excelente calidad,
           diseñada para brindar comodidad y estilo en cualquier ocasión.
         </p>
+        <div className={styles.cantidadContainer}>
 
-        <button className={styles.boton}>
+          <label>Cantidad</label>
+
+          <div className={styles.cantidadControl}>
+
+            <button
+              onClick={() => cantidad > 1 && setCantidad(cantidad - 1)}
+            >
+              −
+            </button>
+
+            <input
+              type="number"
+              min="1"
+              max={producto.stock}
+              value={cantidad}
+              onChange={(e) => setCantidad(Number(e.target.value))}
+            />
+
+            <button
+              onClick={() =>
+                cantidad < producto.stock &&
+                setCantidad(cantidad + 1)
+              }
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+        <button className={styles.boton} onClick={agregarAlCarrito}>
           Agregar al carrito
         </button>
 
