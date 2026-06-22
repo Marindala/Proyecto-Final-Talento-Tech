@@ -1,3 +1,5 @@
 export function GestionCupones () {
-    <h2>GestionCupones</h2>
+   return <h2>GestionCupones</h2>
 }
+
+export default GestionCupones;
