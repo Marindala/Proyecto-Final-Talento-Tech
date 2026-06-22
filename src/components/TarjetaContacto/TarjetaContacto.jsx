@@ -20,4 +20,3 @@ function TarjetaContacto({  nombre, rol, linkedinURL, fotoURL }) {
 
 export default TarjetaContacto;
 
-//npm run build
