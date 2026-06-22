@@ -8,6 +8,7 @@ import {
 import Cart from "./components/Cart/Cart";
 import ProductosBD from "./components/ProductosBD/ProductosBD";
 import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
+import Directorio from "./components/Directorio/Directorio";
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
         <Route
           path="/"
           element={<Inicio />}
+
+        />
+         <Route
+          path="/us"
+          element={<Directorio />}
 
         />
 
