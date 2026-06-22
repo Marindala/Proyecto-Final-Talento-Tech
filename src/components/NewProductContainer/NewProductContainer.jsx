@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import { ProductForm } from '../ProductForm.jsx/ProductForm';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 function NewProductContainer() {
     // 1. Guarda los datos en el estado
     const [datosForm, setDatosForm] = useState({
-        nombre: '', precio: '', stock: '', // Quitamos la urlImagen de aca porque la obtendremos después de la subida
+        nombre: '',
+        precio: '',
+        stock: '',
+        categoria: '' // Quitamos la urlImagen de aca porque la obtendremos después de la subida
     });
 
     const [loading, setLoading] = useState(false);

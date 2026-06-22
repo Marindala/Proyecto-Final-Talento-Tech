@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import TarjetaContacto from "../TarjetaContacto/TarjetaContacto";
+import TarjetaContacto from "../TarjetaContacto/TarjetaContacto"
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { db } from '../../Firebase/config.js';;
 import styles from "./Directorio.module.css";
 
 function Directorio() {
@@ -8,31 +10,34 @@ function Directorio() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("/data/nosotros.json")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Error al cargar los datos");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setNosotros(data);
-      })
-      .catch((err) => {
-        setError(err.message);
+    const equipo = collection(db, "equipo")
+    console.log(nosotros);
+    getDocs(equipo).then((resp) => {
+      setNosotros(
+        resp.docs.map((doc) => ({
+          id: doc.id,
+          nombre: doc.data().Nombre,
+          imagen: doc.data().FotoURL,
+          rol: doc.data().Rol,
+          linkedinURL: doc.data().LinkedinURL
+        }))
+      );
+    })
+      .catch(() => {
+        setError("No se pudo cargar el equipo");
       })
       .finally(() => {
         setCargando(false);
       });
   }, []);
-
-  if (cargando) {
-    return <p className={styles.mensaje}>Cargando equipo...</p>;
-  }
-
-  if (error) {
-    return <p className={styles.error}>⚠️ {error}</p>;
-  }
+  // El array vacío asegura que este efecto se ejecute solo una vez
+  /*  if (cargando) {
+     return <p className={styles.mensaje}>Cargando equipo...</p>;
+   }
+ 
+   if (error) {
+     return <p className={styles.error}>⚠️ {error}</p>;
+   } */
 
   return (
     <div className={styles.contenedor}>
@@ -42,11 +47,11 @@ function Directorio() {
         {nosotros.map((persona) => (
           <TarjetaContacto
             key={persona.id}
-            imagen={persona.imagen}
+            fotoURL={persona.imagen}
             nombre={persona.nombre}
-            puesto={persona.puesto}
-            email={persona.email}
-            posicion={persona.posicion}
+            rol={persona.rol}
+            linkedinURL={persona.linkedinURL}
+
           />
         ))}
       </div>
