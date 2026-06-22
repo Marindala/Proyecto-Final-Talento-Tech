@@ -9,7 +9,6 @@ import Cart from "./components/Cart/Cart";
 import ProductosBD from "./components/ProductosBD/ProductosBD";
 import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 import Directorio from "./components/Directorio/Directorio";
-//import NewProductContainer from "./components/NewProductContainer/NewProductContainer";
 import Gestion from "./components/Gestion/Gestion";
 
 function App() {
