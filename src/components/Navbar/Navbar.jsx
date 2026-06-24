@@ -18,7 +18,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
             <Link to="/">Inicio</Link>
             <Link to="/products">Productos</Link>
             <Link to="/us">Nosotros</Link>
-            <Link to="/contact">Contacto</Link>
+          {/*   <Link to="/contact">Contacto</Link> */}
             <Link to="/gestion">Gestión</Link>
             <Link to="/cart"> 🛒</Link>
 
