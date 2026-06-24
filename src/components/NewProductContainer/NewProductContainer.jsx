@@ -38,7 +38,14 @@ function NewProductContainer() {
         if (!imagenFile) {
             alert("Seleccioná una imagen primero");
             return;
+            console.log('Enviando producto a Firebase:',
+                productoCompleto);
         }
+
+        setLoading(true);
+        console.log("Loading...");
+
+
         // --- Lógica para subir la imagen a Imgbb ---
         const apiKey = 'bb473b1e2c22cb344a4767460a6ddfcf'; //  ¡Aquí va tu clave!
         const formData = new FormData();
@@ -48,17 +55,19 @@ function NewProductContainer() {
 
         try {
             console.log("Subiendo imagen a Imgbb...");
+
             const respuestaImgbb = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,
                 {
                     method: 'POST',
                     body: formData,
                 });
             const imgbbData = await respuestaImgbb.json();
-            /* const urlImagen = imgbbData.data.url;
 
-            const productoCompleto = { ...datosForm, urlImagen: urlImagen };
+            const Imagen = imgbbData.data.url;
+
+            const productoCompleto = { ...datosForm, Imagen: Imagen };
             console.log('Producto listo para enviar:', productoCompleto);
-        }; */
+
             if (imgbbData.success) {
                 console.log("Imagen subida con éxito. URL:", imgbbData.data.url);
                 // Unimos la URL de la imagen con el resto de los datos del
@@ -67,22 +76,24 @@ function NewProductContainer() {
 
 
                 const productoCompleto = {
-                    ...datosForm,
-                    // Agregamos la URL obtenida
-                    urlImagen: imgbbData.data.url
+                    Nombre: datosForm.nombre,
+                    Precio: datosForm.precio,
+                    Stock: datosForm.stock,
+                    Categoria: datosForm.categoria,
+                    Imagen: imgbbData.data.url
                 };
                 // Por el momento hacemos un console.log
-                console.log('Enviando los siguientes datos COMPLETOS a la API:',
+                console.log('Enviando producto a Firebase',
                     productoCompleto);
-                // Limpiar formulario
-                setDatosForm({
-                    nombre: '',
-                    precio: '',
-                    stock: ''
-                });
+                // Obtenemos la instancia de la base de datos
+                const db = getFirestore();
+                // Apuntamos a la colección "productos" (si no existe, se crea)
+                const productosCollection = collection(db, "productos nacionales");
+                // Agregamos el nuevo documento a la colección
+                await addDoc(productosCollection, productoCompleto);
 
-                // Limpiar imagen seleccionada
-                setImagenFile(null);
+
+
 
             } else {
                 throw new Error('La subida de la imagen a Imgbb falló.');
@@ -91,13 +102,14 @@ function NewProductContainer() {
             console.error("Error en el proceso de envío:", error);
             alert("Hubo un error al subir la imagen. Por favor, intentá de nuevo.");
         }
+
+        //Ejercicio Clase 6
+        //Paso 3
         finally {
-            // ✅ Siempre desactiva loading
+            //Desactivar loading
             setLoading(false);
         }
-
     };
-
     // 3. Conecta la lógica con la vista
     return (
         <ProductForm
