@@ -10,6 +10,7 @@ import ProductosBD from "./components/ProductosBD/ProductosBD";
 import ProductoDetalle from "./components/ProductoDetalle/ProductoDetalle";
 import Directorio from "./components/Directorio/Directorio";
 import Gestion from "./components/Gestion/Gestion";
+import GestionCupones from "./components/GestionCupones/GestionCupones";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/gestion" element={<Gestion />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/us" element={<Directorio />} />
+        <Route path="/admin/cupones" element={<GestionCupones />} />
         
 
       </Route>

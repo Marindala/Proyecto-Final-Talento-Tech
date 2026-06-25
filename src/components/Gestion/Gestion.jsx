@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../../Firebase/config.js';
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import NewProductContainer from '../NewProductContainer/NewProductContainer';
+import styles from "./Gestion.module.css"
 
 const Gestion = () => {
     const [productos, setProductos] = useState([]);
@@ -22,7 +23,7 @@ const Gestion = () => {
             );
         };
         fetchProductos();
-    }, [productos]);
+    }, []);
 
     const handleDelete = async (id) => {
         const confirmacion = window.confirm("¿Está seguro de que desea eliminar este producto ? ")
@@ -35,18 +36,27 @@ const Gestion = () => {
     };
 
     return (
-        <div>
+        <div className={styles.container}>
 
-            <h2>Gestión de Productos</h2>
+            <h2 className={styles.title}>Gestión de Productos</h2>
             <hr />
             <NewProductContainer datosForm={estadoInicialForm} />
             <hr />
             <h3>Lista de Productos</h3>
-            <ul>
+            <ul className={styles.lista}>
                 {productos.map((prod) => (
-                    <li key={prod.id}>
-                        {prod.nombre} - ${prod.precio}
-                        <button onClick={() => handleDelete(prod.id)} style={{
+                    <li key={prod.id} className={styles.item}>
+                        <span className={styles.nombre}>
+                            {prod.Nombre}
+                        </span>
+                        {" - "}
+                        <span className={styles.precio}>
+                            ${prod.Precio}
+                        </span>
+                        <span>
+                            {" "} | {prod.Categoria}
+                        </span>
+                        <button className={styles.btnEliminar} onClick={() => handleDelete(prod.id)} style={{
                             marginLeft:
                                 '10px'
                         }}>Eliminar</button>

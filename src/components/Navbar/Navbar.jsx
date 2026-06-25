@@ -13,13 +13,16 @@ function Navbar({ menuOpen, setMenuOpen }) {
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""
             }`
-        }  onClick={() => setMenuOpen(false)}>
+        } onClick={() => setMenuOpen(false)}>
 
             <Link to="/">Inicio</Link>
             <Link to="/products">Productos</Link>
             <Link to="/us">Nosotros</Link>
-          {/*   <Link to="/contact">Contacto</Link> */}
+            {/*   <Link to="/contact">Contacto</Link> */}
             <Link to="/gestion">Gestión</Link>
+            <Link to="/admin/cupones">
+                Cupones
+            </Link>
             <Link to="/cart"> 🛒</Link>
 
         </nav>
