@@ -40,6 +40,38 @@
   margin-bottom: 30px;
 }
 
+.socialContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.socialLink {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-4px);
+  color: var(--taupe);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  font-size: 1.4rem;
+}
+
+
 .copy {
   color: var(--taupe);
 
