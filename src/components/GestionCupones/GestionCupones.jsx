@@ -7,6 +7,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../Firebase/config";
+import styles from "./GestionCupones.module.css";
 
 function GestionCupones() {
   const [codigo, setCodigo] = useState("");
@@ -55,49 +56,81 @@ function GestionCupones() {
     }
   };
 
-  return (
-    <div>
-      <h1>Administración de Cupones</h1>
+ return (
+  <div className={styles.container}>
 
-      <form onSubmit={crearCupon}>
-        <input
-          type="text"
-          placeholder="Código"
-          value={codigo}
-          onChange={(e) => setCodigo(e.target.value)}
-          required
-        />
+    <h1 className={styles.titulo}>
+      🎟 Administración de Cupones
+    </h1>
 
-        <input
-          type="number"
-          placeholder="% descuento"
-          value={descuento}
-          onChange={(e) => setDescuento(e.target.value)}
-          required
-        />
+    <form
+      className={styles.formulario}
+      onSubmit={crearCupon}
+    >
 
-        <button type="submit">
-          Crear Cupón
-        </button>
-      </form>
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="Código del cupón"
+        value={codigo}
+        onChange={(e) => setCodigo(e.target.value)}
+        required
+      />
 
-      <hr />
+      <input
+        className={styles.input}
+        type="number"
+        placeholder="% de descuento"
+        value={descuento}
+        onChange={(e) => setDescuento(e.target.value)}
+        required
+      />
+
+      <button
+        className={styles.botonCrear}
+        type="submit"
+      >
+        Crear Cupón
+      </button>
+
+    </form>
+
+    <div className={styles.lista}>
 
       <h2>Cupones creados</h2>
 
       {cupones.map((cupon) => (
-        <div key={cupon.id}>
-          <strong>{cupon.codigo}</strong> - {cupon.descuento}% OFF
+
+        <div
+          key={cupon.id}
+          className={styles.card}
+        >
+
+          <div>
+            <div className={styles.codigo}>
+              {cupon.codigo}
+            </div>
+
+            <div className={styles.descuento}>
+              {cupon.descuento}% OFF
+            </div>
+          </div>
 
           <button
+            className={styles.botonEliminar}
             onClick={() => eliminarCupon(cupon.id)}
           >
-            Eliminar
+            🗑 Eliminar
           </button>
+
         </div>
+
       ))}
+
     </div>
-  );
+
+  </div>
+);
 }
 
 export default GestionCupones;

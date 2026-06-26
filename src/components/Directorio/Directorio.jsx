@@ -42,6 +42,9 @@ function Directorio() {
   return (
     <div className={styles.contenedor}>
       <h2 className={styles.titulo}>Nuestro Equipo</h2>
+      
+        <p>Yo Soy Yo nace...</p>
+      
 
       <div className={styles.grid}>
         {nosotros.map((persona) => (
