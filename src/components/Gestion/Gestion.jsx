@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../Firebase/config.js';
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import NewProductContainer from '../NewProductContainer/NewProductContainer';
 import styles from "./Gestion.module.css"
 
 const Gestion = () => {
+    const [productoAEditar, setProductoAEditar] = useState(null);
     const [productos, setProductos] = useState([]);
     const estadoInicialForm = {
         nombre: "",
@@ -24,6 +25,18 @@ const Gestion = () => {
         };
         fetchProductos();
     }, []);
+
+    useEffect(() => {
+        if (productoAEditar) {
+            setDatosForm(productoAEditar);
+        } else {
+            setDatosForm(estadoInicialForm);
+        }
+    }, [productoAEditar]);
+
+    const handleEditClick = (producto) => {
+        setProductoAEditar(producto);
+    };
 
     const handleDelete = async (id) => {
         const confirmacion = window.confirm("¿Está seguro de que desea eliminar este producto ? ")
