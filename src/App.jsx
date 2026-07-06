@@ -12,6 +12,7 @@ import Directorio from "./components/Directorio/Directorio";
 import Gestion from "./components/Gestion/Gestion";
 import GestionCupones from "./components/GestionCupones/GestionCupones";
 import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/us" element={<Directorio />} />
         <Route path="/admin/cupones" element={<GestionCupones />} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
         
 
       </Route>

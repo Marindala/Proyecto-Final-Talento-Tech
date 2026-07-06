@@ -1,53 +1,126 @@
-// src/componentes/Login/Login.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
+import styles from "./Login.module.css";
+import { validarEmail, validarPassword } from "../../utils/validations";
+
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
     const navigate = useNavigate();
-    const handleLogin = (e) => {
+
+    const handleLogin = async (e) => {
         e.preventDefault();
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log("Usuario logueado:", user);
-                alert("¡Inicio de sesión exitoso!");
-                navigate('/'); //
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error("Error en el login:", errorCode, errorMessage);
-                alert("Error: " + errorMessage);
-            });
+
+        setError("");
+
+        const errorEmail = validarEmail(email);
+
+        if (errorEmail) {
+            setError(errorEmail);
+            return;
+        }
+
+        const errorPassword = validarPassword(password);
+
+        if (errorPassword) {
+            setError(errorPassword);
+            return;
+        }
+
+        try {
+            const auth = getAuth();
+
+            await signInWithEmailAndPassword(auth, email, password);
+
+            navigate("/");
+
+        } catch (error) {
+
+            switch (error.code) {
+                case "auth/invalid-credential":
+                    setError("Correo o contraseña incorrectos.");
+                    break;
+
+                default:
+                    setError("No se pudo iniciar sesión.");
+            }
+        }
     };
+
+
+
+    /*   const handleLogin = (e) => {
+          e.preventDefault();
+  
+          const auth = getAuth();
+  
+          signInWithEmailAndPassword(auth, email, password)
+              .then(() => {
+                  alert("¡Inicio de sesión exitoso!");
+                  navigate("/");
+              })
+              .catch((error) => {
+                  alert(error.message);
+              });
+      }; */
+
     return (
-        <div>
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="email"
+        <div className={styles.container}>
 
-                    placeholder="Correo electrónico"
+            <div className={styles.card}>
 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                <h2>Iniciar Sesión</h2>
 
-                <input
-                    type="password"
+                <p>Ingresá con tu cuenta</p>
 
-                    placeholder="Contraseña"
-                    value={password}
+                <form onSubmit={handleLogin}>
 
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Ingresar</button>
-            </form>
+                    <input
+                        type="email"
+                        placeholder="Correo electrónico"
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            setError("");
+                        }}
+
+                    />
+                    {error.email && (
+                        <p className={styles.error}>
+                            {error.email}
+                        </p>
+                    )}
+
+                    <input
+                        type="password"
+                        placeholder="Contraseña"
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setError("");
+                        }}
+                    />
+                    {error && <p className={styles.error}>{error}</p>}
+
+                    <button type="submit">
+                        Ingresar
+                    </button>
+
+                </form>
+
+                <span>
+                    ¿No tenés cuenta?
+                    <Link to="/register"> Registrate</Link>
+                </span>
+
+            </div>
+
         </div>
     );
 };
+
 export default Login;
