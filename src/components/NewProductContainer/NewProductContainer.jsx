@@ -87,21 +87,42 @@ function NewProductContainer() {
                     productoCompleto);
                 // Obtenemos la instancia de la base de datos
                 const db = getFirestore();
-                // Apuntamos a la colección "productos" (si no existe, se crea)
-                const productosCollection = collection(db, "productos nacionales");
-                // Agregamos el nuevo documento a la colección
-                await addDoc(productosCollection, productoCompleto);
+                try {
+                    if (productoAEditar) {
+                        const docRef = doc(db, "productos nacionales",
+                            productoAEditar.id);
+                        // update
+                        await updateDoc(docRef, productoFinal);
+                        alert("Producto actualizado con éxito.");
+                    } else {
+                        // create
+                        await addDoc(collection(db, "productos nacionales"),
+                            productoCompleto);
+                        alert("Producto guardado con éxito.");
+                    }
+                    // ... (reseteo de formulario) ...
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            };
 
 
 
 
-            } else {
-                throw new Error('La subida de la imagen a Imgbb falló.');
-            }
-        } catch (error) {
-            console.error("Error en el proceso de envío:", error);
-            alert("Hubo un error al subir la imagen. Por favor, intentá de nuevo.");
+            //const productosCollection = collection(db, "productos nacionales");
+            // Agregamos el nuevo documento a la colección
+            //await addDoc(productosCollection, productoCompleto);
+
+
+
+
+            //} else {
+            //throw new Error('La subida de la imagen a Imgbb falló.');
         }
+        // } catch (error) {
+        // console.error("Error en el proceso de envío:", error);
+        // alert("Hubo un error al subir la imagen. Por favor, intentá de nuevo.");
+        // }
 
         //Ejercicio Clase 6
         //Paso 3

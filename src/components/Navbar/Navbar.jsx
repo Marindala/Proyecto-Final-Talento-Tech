@@ -3,10 +3,12 @@ import { useState } from "react";
 import styles from "./Navbar.module.css"
 import { Link } from 'react-router-dom';
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 
 function Navbar({ menuOpen, setMenuOpen }) {
     const { getCartQuantity } = useCart();
     console.log("Cantidad en el carrito:", getCartQuantity);
+    const { user, logout } = useAuth();
 
 
     // Ejecutamos la función para obtener el número total
@@ -33,6 +35,18 @@ function Navbar({ menuOpen, setMenuOpen }) {
             </Link>
             <Link to="/cart"> 🛒 {totalProductos > 0 && <span>({totalProductos})</span>}
             </Link>
+            <ul>{/* Lógica de renderizado condicional */}
+                {user ? (
+                    <>{/* Mostrar Gestion SOLO si el usuario es admin */}
+                        {user.rol === 'admin' && (
+                            <li><Link to="/alta" style={{ color: 'black' }}>Gestion</Link></li>)}
+                        <span>¡Hola, {user.email}!</span>
+                        <button onClick={logout}>Cerrar Sesión</button>
+                    </>
+                ) : (
+                    <li><Link to="/login">Login</Link></li>
+                )}
+            </ul>
 
         </nav>
     );

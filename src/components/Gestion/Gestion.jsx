@@ -7,6 +7,12 @@ import styles from "./Gestion.module.css"
 const Gestion = () => {
     const [productoAEditar, setProductoAEditar] = useState(null);
     const [productos, setProductos] = useState([]);
+      const [datosForm, setDatosForm] = useState({
+        nombre: '',
+        precio: '',
+        stock: '',
+        categoria: '' // Quitamos la urlImagen de aca porque la obtendremos después de la subida
+    });
     const estadoInicialForm = {
         nombre: "",
         categoria: "",
