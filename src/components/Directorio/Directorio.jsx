@@ -41,9 +41,19 @@ function Directorio() {
 
   return (
     <div className={styles.contenedor}>
-      <h2 className={styles.titulo}>Nuestro Equipo</h2>
+      <h2 className={styles.titulo}>Nuestra Historia</h2>
       
-        <p>Yo Soy Yo nace...</p>
+        <p className={styles.history}>En 2013 nace Yo Soy Yo, un sueño inspirado en el arte y la espiritualidad. Después de años de estudiar Metafísica, Mandalas, Angelología y Kabbalah, descubrimos que una simple remera podía convertirse en un puente para transmitir amor, inspiración y conciencia.
+
+Cada diseño es una creación original que busca recordarte que sos valioso, que tus pensamientos crean tu realidad y que siempre podemos elegir vibrar más alto.
+
+No vendemos solamente remeras.
+
+Creamos prendas con propósito, para personas que creen en el poder de las palabras, la energía positiva y el amor como fuerza transformadora.
+
+Vestí quien sos. Inspirá a otros. Compartí amor.
+
+Yo Soy Yo.</p>
       
 
       <div className={styles.grid}>

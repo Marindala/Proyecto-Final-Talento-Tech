@@ -10,6 +10,13 @@
   color: var(--text);
 }
 
+.history{
+  display: flex;
+  flex-wrap: wrap;
+ 
+
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
