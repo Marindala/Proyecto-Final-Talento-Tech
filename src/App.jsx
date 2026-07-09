@@ -13,6 +13,7 @@ import Gestion from "./components/Gestion/Gestion";
 import GestionCupones from "./components/GestionCupones/GestionCupones";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -27,9 +28,17 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/us" element={<Directorio />} />
         <Route path="/admin/cupones" element={<GestionCupones />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/alta"
+          element={
+            <ProtectedRoute rolesPermitidos={['admin']}>
+              <Gestion />
+            </ProtectedRoute>
+          }
+        />
+
 
       </Route>
 

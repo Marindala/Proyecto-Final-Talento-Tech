@@ -7,7 +7,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword
 } from "firebase/auth";
-import { getFirestore, doc, getDoc} from 'firebase/firestore';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 // 1. Crear el contexto
 export const AuthContext = createContext();
 // Hook personalizado
@@ -25,9 +25,21 @@ export const AuthProvider = ({ children }) => {
     const auth = getAuth(); // Obtenemos la instancia de auth una sola vez
     const db = getFirestore(); // Inicializamos Firestore
     // Función para registrar un nuevo usuario
-    const signup = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
-    };
+    const signup = async (nombre, email, password) => {
+        /*  return createUserWithEmailAndPassword(auth, nombre, email, password); */
+        // 1. Crear el usuario en Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        // 2. Guardar el nombre en Firestore (colección 'usuarios')
+        await setDoc(doc(db, "usuarios", user.uid), {
+            nombre: nombre,
+            email: email,
+            rol: 'user' // Asignamos rol por defecto
+        });
+
+        return userCredential;
+    }
+
     // Función para iniciar sesión
     const login = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);

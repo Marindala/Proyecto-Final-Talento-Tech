@@ -1,18 +1,24 @@
 import React from 'react';
 import { useState } from "react";
 import styles from "./Navbar.module.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
+
 
 function Navbar({ menuOpen, setMenuOpen }) {
     const { getCartQuantity } = useCart();
     console.log("Cantidad en el carrito:", getCartQuantity);
     const { user, logout } = useAuth();
-
+    const navigate = useNavigate();
 
     // Ejecutamos la función para obtener el número total
     const totalProductos = getCartQuantity();
+
+    const handleLogout = async () => {
+        await logout();
+        navigate('/'); // Redirige automáticamente al inicio tras cerrar sesión
+    };
 
 
     const handleCloseMenu = () => {
@@ -41,7 +47,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
                         {user.rol === 'admin' && (
                             <li><Link to="/alta" style={{ color: 'black' }}>Gestion</Link></li>)}
                         <span>¡Hola, {user.email}!</span>
-                        <button onClick={logout}>Cerrar Sesión</button>
+                        <button onClick={handleLogout }>Cerrar Sesión</button>
                     </>
                 ) : (
                     <li><Link to="/login">Login</Link></li>

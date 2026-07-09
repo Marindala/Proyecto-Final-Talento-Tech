@@ -10,11 +10,13 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
 
     const { signup } = useAuth();
     const navigate = useNavigate();
 
     const handleRegister = async (e) => {
+        console.log("EMAIL QUE LLEGA:", email);
         e.preventDefault();
 
         if (!nombre || !email || !password || !confirmPassword) {
@@ -41,21 +43,24 @@ const Register = () => {
         } catch (error) {
             console.error(error);
 
+
+
             switch (error.code) {
-                case "auth/email-already-in-use":
-                    alert("Ese correo ya está registrado.");
-                    break;
 
                 case "auth/invalid-email":
-                    alert("Correo electrónico inválido.");
+                    setError("El correo electrónico no es válido.");
+                    break;
+
+                case "auth/email-already-in-use":
+                    setError("Este correo ya está registrado.");
                     break;
 
                 case "auth/weak-password":
-                    alert("La contraseña es demasiado débil.");
+                    setError("La contraseña debe tener al menos 6 caracteres.");
                     break;
 
                 default:
-                    alert("Ocurrió un error al registrar el usuario.");
+                    setError("No se pudo crear la cuenta. Intentalo nuevamente.");
             }
         }
     };
