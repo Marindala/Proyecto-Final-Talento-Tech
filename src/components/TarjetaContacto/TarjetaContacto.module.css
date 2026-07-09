@@ -16,7 +16,7 @@
   height: 120px;
   border-radius: 110%;
   object-fit: cover;
-  border: 3px solid #f47e9c;
+  border: 3px solid var(--text);;
   margin-bottom: 10px;
   justify-content: center;
 
