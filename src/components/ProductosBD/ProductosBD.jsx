@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./ProductosBD.module.css";
 import TarjetaProducto from '../TarjetaProducto/TarjetaProducto.jsx';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 // Importaciones clave de Firebase
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/config.js';
@@ -25,16 +26,17 @@ const ProductosBD = () => {
         })
     }, []); // El array vacío asegura que este efecto se ejecute solo una vez
     return (
-        <div>
+        <Container className="mt-4">
             <h1 className={styles.subtitulo}>Productos</h1>
             <div className={styles.listaProductos}>
                 {/* 5. Mapeamos el estado `productos` para renderizar cada
 uno */}
+
                 {productos.map(prod => {
                     console.log(prod);
 
                     return (
-                        <div className={styles.productos} key={prod.id}>
+                        <Col className={styles.productos} key={prod.id}>
                             <TarjetaProducto
                                 key={prod.id}
                                 id={prod.id}
@@ -45,11 +47,11 @@ uno */}
                                 categoria={prod.categoria}
                             />
                             <hr />
-                        </div>
+                        </Col>
                     );
                 })}
             </div>
-        </div>
+        </Container>
     );
 };
 export default ProductosBD;
