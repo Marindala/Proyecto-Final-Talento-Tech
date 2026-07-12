@@ -45,8 +45,8 @@ function Navbar({ menuOpen, setMenuOpen }) {
                 {user ? (
                     <>{/* Mostrar Gestion SOLO si el usuario es admin */}
                         {user.rol === 'admin' && (
-                            <li><Link to="/alta" style={{ color: 'black' }}>Gestion</Link></li>)}
-                        <Link to="/admin/cupones">
+                            <li><Link to="/gestion" style={{ color: 'black' }}>Gestion</Link></li>)}
+                        <Link to="/cupones">
                             Cupones
                         </Link>
                         <span>¡Hola, {user.email}!</span>
