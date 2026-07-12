@@ -24,17 +24,24 @@ function App() {
         <Route path="/" element={<Inicio />} />
         <Route path="/products" element={<ProductosBD Mensaje={"Nuestros Productos"} />} />
         <Route path="/producto/:id" element={<ProductoDetalle Mensaje={"Productos"} />} />
-        <Route path="/gestion" element={<Gestion />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/us" element={<Directorio />} />
-        <Route path="/admin/cupones" element={<GestionCupones />} />
+        <Route path="/cupones" element={<GestionCupones />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
-          path="/alta"
+          path="/gestion"
           element={
             <ProtectedRoute rolesPermitidos={['admin']}>
               <Gestion />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cupones"
+          element={
+            <ProtectedRoute rolesPermitidos={['admin', 'user']}>
+              <GestionCupones />
             </ProtectedRoute>
           }
         />

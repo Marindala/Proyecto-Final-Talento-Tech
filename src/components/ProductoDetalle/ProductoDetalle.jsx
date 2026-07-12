@@ -4,6 +4,7 @@ import { db } from "../../Firebase/config";
 import { useParams } from "react-router-dom";
 import styles from "./ProductoDetalle.module.css";
 import { useCart } from "../../context/CartContext";
+import { Helmet } from 'react-helmet';
 
 
 function ProductoDetalle() {
@@ -65,73 +66,84 @@ function ProductoDetalle() {
   }
 
   return (
-    <div className={styles.container}>
+    <>
+      <Helmet>
+        <title>{producto.nombre} | Yo Soy Yo</title>
 
-      <div className={styles.detalleImagen}>
-
-        <img
-          src={`/${producto.imagen}`}
-          alt={producto.nombre}
-          width="300"
+        <meta
+          name="description"
+          content={`Comprá ${producto.nombre} en Yo Soy Yo.`}
         />
-      </div>
+      </Helmet>
+      <div className={styles.container}>
 
-      <div className={styles.info}>
 
-        <h1>{producto.nombre}</h1>
+        <div className={styles.detalleImagen}>
 
-        <div className={styles.precio}>
-          ${producto.precio}
+          <img
+            src={`/${producto.imagen}`}
+            alt={producto.nombre}
+            width="300"
+          />
         </div>
 
-        <div className={styles.stock}>
-          Stock disponible: {producto.stock}
-        </div>
+        <div className={styles.info}>
 
-        <p className={styles.descripcion}>
-          Prenda confeccionada con materiales de excelente calidad,
-          diseñada para brindar comodidad y estilo en cualquier ocasión.
-        </p>
-        <div className={styles.cantidadContainer}>
+          <h1>{producto.nombre}</h1>
 
-          <label>Cantidad</label>
+          <div className={styles.precio}>
+            ${producto.precio}
+          </div>
 
-          <div className={styles.cantidadControl}>
+          <div className={styles.stock}>
+            Stock disponible: {producto.stock}
+          </div>
 
-            <button
-              onClick={() => cantidad > 1 && setCantidad(cantidad - 1)}
-            >
-              −
-            </button>
+          <p className={styles.descripcion}>
+            Prenda confeccionada con materiales de excelente calidad,
+            diseñada para brindar comodidad y estilo en cualquier ocasión.
+          </p>
+          <div className={styles.cantidadContainer}>
 
-            <input
-              type="number"
-              min="1"
-              max={producto.stock}
-              value={cantidad}
-              onChange={(e) => setCantidad(Number(e.target.value))}
-            />
+            <label>Cantidad</label>
 
-            <button
-              onClick={() =>
-                cantidad < producto.stock &&
-                setCantidad(cantidad + 1)
-              }
-            >
-              +
-            </button>
+            <div className={styles.cantidadControl}>
+
+              <button
+                onClick={() => cantidad > 1 && setCantidad(cantidad - 1)}
+              >
+                −
+              </button>
+
+              <input
+                type="number"
+                min="1"
+                max={producto.stock}
+                value={cantidad}
+                onChange={(e) => setCantidad(Number(e.target.value))}
+              />
+
+              <button
+                onClick={() =>
+                  cantidad < producto.stock &&
+                  setCantidad(cantidad + 1)
+                }
+              >
+                +
+              </button>
+
+            </div>
 
           </div>
 
+          <button className={styles.boton} onClick={agregarAlCarrito}>
+            Agregar al carrito
+          </button>
+
         </div>
 
-        <button className={styles.boton} onClick={agregarAlCarrito}>
-          Agregar al carrito
-        </button>
-
       </div>
-
-    </div>
+    </>
   );
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from "react";
 import styles from "./Navbar.module.css"
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from "../../context/CartContext";
@@ -21,9 +20,6 @@ function Navbar({ menuOpen, setMenuOpen }) {
     };
 
 
-    const handleCloseMenu = () => {
-        setMenuOpen(false);
-    };
 
     return (
 
@@ -35,10 +31,14 @@ function Navbar({ menuOpen, setMenuOpen }) {
             <Link to="/products">Productos</Link>
             <Link to="/us">Nosotros</Link>
             {/*   <Link to="/contact">Contacto</Link> */}
-            <Link to="/gestion">Gestión</Link>
-            <Link to="/admin/cupones">
-                Cupones
-            </Link>
+            {/* Solo usuarios logueados */}
+            {user && (
+                <Link to="/cupones">
+                    Cupones
+                </Link>
+            )}
+
+
             <Link to="/cart"> 🛒 {totalProductos > 0 && <span>({totalProductos})</span>}
             </Link>
             <ul>{/* Lógica de renderizado condicional */}
@@ -46,8 +46,11 @@ function Navbar({ menuOpen, setMenuOpen }) {
                     <>{/* Mostrar Gestion SOLO si el usuario es admin */}
                         {user.rol === 'admin' && (
                             <li><Link to="/alta" style={{ color: 'black' }}>Gestion</Link></li>)}
+                        <Link to="/admin/cupones">
+                            Cupones
+                        </Link>
                         <span>¡Hola, {user.email}!</span>
-                        <button onClick={handleLogout }>Cerrar Sesión</button>
+                        <button onClick={handleLogout}>Cerrar Sesión</button>
                     </>
                 ) : (
                     <li><Link to="/login">Login</Link></li>
