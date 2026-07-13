@@ -5,8 +5,9 @@ import NewProductContainer from '../NewProductContainer/NewProductContainer';
 import styles from "./Gestion.module.css"
 
 const Gestion = () => {
-    const [productoAEditar, setProductoAEditar] = useState(null);
+    const [productoEditar, setProductoEditar] = useState(null);
     const [productos, setProductos] = useState([]);
+    const [mostrarModal, setMostrarModal] = useState(false);
     const [datosForm, setDatosForm] = useState({
         nombre: '',
         precio: '',
@@ -32,18 +33,27 @@ const Gestion = () => {
         fetchProductos();
     }, []);
 
-    useEffect(() => {
-        if (productoAEditar) {
-            setDatosForm(productoAEditar);
-        } else {
-            setDatosForm(estadoInicialForm);
-        }
-    }, [productoAEditar]);
+    /*  useEffect(() => {
+         if (productoAEditar) {
+             setDatosForm(productoAEditar);
+         } else {
+             setDatosForm(estadoInicialForm);
+         }
+     }, [productoAEditar]); */
 
     const handleEditClick = (producto) => {
-        setProductoAEditar(producto);
+        setProductoEditar(producto);
+        setMostrarModal(false);
     };
 
+    const cancelarEdicion = () => {
+        setProductoEditar(null);
+        setMostrarModal(false);
+    };
+    /*     const cancelarEdicion = () => {
+        setProductoEditar(null);
+    };
+     */
     const handleDelete = async (id) => {
         const confirmacion = window.confirm("¿Está seguro de que desea eliminar este producto ? ")
         if (confirmacion) {
@@ -60,8 +70,57 @@ const Gestion = () => {
             <h2 className={styles.title}>Gestión de Productos</h2>
             <hr />
             <NewProductContainer
-                productoAEditar={productoAEditar}
-                setProductoAEditar={setProductoAEditar} />
+                productoEditar={productoEditar}
+                setProductoEditar={setProductoEditar}
+
+            />
+            {productoEditar && (
+                <div className={styles.contenedorCancelar}>
+                    <button
+                        className={styles.btnCancelar}
+                        onClick={() => setMostrarModal(true)}
+                    >
+                        Cancelar Edición
+                    </button>
+                </div>
+            )}
+            {mostrarModal && (
+                <div className="modal fade show d-block" style={{ backgroundColor: "rgba(0,0,0,.5)" }}>
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+
+                            <div className="modal-header">
+                                <h5 className="modal-title">
+                                    Cancelar edición
+                                </h5>
+                            </div>
+
+                            <div className="modal-body">
+                                ¿Seguro que querés cancelar la edición?
+                            </div>
+
+                            <div className="modal-footer">
+
+                                <button
+                                    className="btn btn-secondary"
+                                    onClick={() => setMostrarModal(false)}
+                                >
+                                    No, seguir editando
+                                </button>
+
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={cancelarEdicion}
+                                >
+                                    Sí, cancelar
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            )}
             <hr />
             <h3>Lista de Productos</h3>
             <ul className={styles.lista}>
@@ -81,6 +140,10 @@ const Gestion = () => {
                             marginLeft:
                                 '10px'
                         }}>Eliminar</button>
+                        <button className={styles.btnEliminar} onClick={() => handleEditClick(prod)} style={{
+                            marginLeft:
+                                '10px'
+                        }}>Editar</button>
                         {/*acá agregaremos los botones de acción */}
                     </li>
                 ))}

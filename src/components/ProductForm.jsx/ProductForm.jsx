@@ -1,9 +1,10 @@
 //Recibe los datos y las funciones por props.
+import { useEffect } from 'react'
 import styles from "./ProductForm.module.css"
-export function ProductForm({ datosForm,
+export function ProductForm({ datosForm, setDatosForm,
     manejarCambio,
     handleFormSubmit,
-    manejarCambioImagen, loading,  imagenInputRef }) {
+    manejarCambioImagen, loading, imagenInputRef, productoEditar }) {
 
     const formStyle = {
         display: 'flex',
@@ -16,6 +17,25 @@ export function ProductForm({ datosForm,
         gap: '16px'
     };
 
+    useEffect(() => {
+        if (productoEditar) {
+            setDatosForm({
+                nombre: productoEditar.Nombre,
+                precio: productoEditar.Precio,
+                stock: productoEditar.Stock,
+                categoria: productoEditar.Categoria,
+            });
+        } else {
+            setDatosForm({
+                nombre: '',
+                precio: '',
+                stock: '',
+                categoria: ''
+            });
+
+
+        }
+    }, [productoEditar]);
     /*     if (loading) {
        return <div className={styles.loader}></div>;
      } */

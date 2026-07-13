@@ -45,3 +45,25 @@
 .btnEliminar:hover {
   background: #bb2d3b;
 }
+
+.contenedorCancelar {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.btnCancelar {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btnCancelar:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
