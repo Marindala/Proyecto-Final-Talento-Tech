@@ -7,7 +7,7 @@ import styles from "./Gestion.module.css"
 const Gestion = () => {
     const [productoAEditar, setProductoAEditar] = useState(null);
     const [productos, setProductos] = useState([]);
-      const [datosForm, setDatosForm] = useState({
+    const [datosForm, setDatosForm] = useState({
         nombre: '',
         precio: '',
         stock: '',
@@ -59,7 +59,9 @@ const Gestion = () => {
 
             <h2 className={styles.title}>Gestión de Productos</h2>
             <hr />
-            <NewProductContainer datosForm={estadoInicialForm} />
+            <NewProductContainer
+                productoAEditar={productoAEditar}
+                setProductoAEditar={setProductoAEditar} />
             <hr />
             <h3>Lista de Productos</h3>
             <ul className={styles.lista}>

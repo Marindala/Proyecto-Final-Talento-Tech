@@ -3,7 +3,7 @@ import styles from "./ProductForm.module.css"
 export function ProductForm({ datosForm,
     manejarCambio,
     handleFormSubmit,
-    manejarCambioImagen, loading }) {
+    manejarCambioImagen, loading,  imagenInputRef }) {
 
     const formStyle = {
         display: 'flex',
@@ -35,6 +35,16 @@ export function ProductForm({ datosForm,
                 />
             </div>
             <div>
+                <label>Categoría:</label>
+                <input
+                    type="text"
+                    placeholder="Ej: Remeras, Buzos"
+                    name="categoria"
+                    value={datosForm.categoria}
+                    onChange={manejarCambio}
+                />
+            </div>
+            <div>
                 <label>Precio:</label>
                 <input
                     type="number"
@@ -58,6 +68,7 @@ export function ProductForm({ datosForm,
                 <label>Imagen:</label>
                 <input
                     type="file"
+                    ref={imagenInputRef}
                     placeholder="https://..."
                     name="imagen" // Atributo clave
                     onChange={manejarCambioImagen}

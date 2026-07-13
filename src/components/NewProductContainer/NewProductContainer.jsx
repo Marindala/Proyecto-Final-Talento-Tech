@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ProductForm } from '../ProductForm.jsx/ProductForm';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
@@ -14,6 +14,7 @@ function NewProductContainer() {
     const [loading, setLoading] = useState(false);
 
     const [imagenFile, setImagenFile] = useState(null);
+    const imagenInputRef = useRef(null);
 
     // 2. Nueva función para manejar el cambio del input de tipo "file"
     const manejarCambioImagen = (evento) => {
@@ -88,23 +89,37 @@ function NewProductContainer() {
                 // Obtenemos la instancia de la base de datos
                 const db = getFirestore();
                 try {
-                    if (productoAEditar) {
+                    /* if (productoAEditar) {
                         const docRef = doc(db, "productos nacionales",
-                            productoAEditar.id);
-                        // update
-                        await updateDoc(docRef, productoFinal);
-                        alert("Producto actualizado con éxito.");
-                    } else {
-                        // create
-                        await addDoc(collection(db, "productos nacionales"),
-                            productoCompleto);
-                        alert("Producto guardado con éxito.");
+                            productoAEditar.id); */
+                    // update
+                    /* await updateDoc(docRef, productoFinal);
+                    alert("Producto actualizado con éxito.");
+                } else { */
+                    // create
+                    await addDoc(collection(db, "productos nacionales"),
+                        productoCompleto);
+                    alert("Producto guardado con éxito.");
+                    setDatosForm({
+                        nombre: '',
+                        precio: '',
+                        stock: '',
+                        categoria: '',
+
+                    });
+
+                    setImagenFile(null);
+
+                    if (imagenInputRef.current) {
+                        imagenInputRef.current.value = "";
                     }
+
                     // ... (reseteo de formulario) ...
                 } catch (error) {
                     console.error("Error:", error);
                 }
             };
+
 
 
 
@@ -138,6 +153,7 @@ function NewProductContainer() {
             manejarCambio={manejarCambio}
             handleFormSubmit={handleFormSubmit}
             manejarCambioImagen={manejarCambioImagen}
+            imagenInputRef={imagenInputRef}
             loading={loading}
         />
     );

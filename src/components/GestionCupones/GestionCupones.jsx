@@ -71,7 +71,7 @@ function GestionCupones() {
       <input
         className={styles.input}
         type="text"
-        placeholder="Código del cupón"
+        placeholder="Remera, Buzo, etc..."
         value={codigo}
         onChange={(e) => setCodigo(e.target.value)}
         required

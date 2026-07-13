@@ -23,39 +23,38 @@ function Navbar({ menuOpen, setMenuOpen }) {
 
     return (
 
-        <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""
-            }`
-        } onClick={() => setMenuOpen(false)}>
+        <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`} onClick={() => setMenuOpen(false)}>
 
             <Link to="/">Inicio</Link>
             <Link to="/products">Productos</Link>
             <Link to="/us">Nosotros</Link>
-            {/*   <Link to="/contact">Contacto</Link> */}
-            {/* Solo usuarios logueados */}
-            {user && (
-                <Link to="/cupones">
-                    Cupones
-                </Link>
+
+            {user && <Link to="/cupones">Cupones</Link>}
+
+            {user?.rol === "admin" && (
+                <Link to="/gestion">Gestión</Link>
             )}
 
-
-            <Link to="/cart"> 🛒 {totalProductos > 0 && <span>({totalProductos})</span>}
+            <Link to="/cart">
+                🛒 {totalProductos > 0 && <span>({totalProductos})</span>}
             </Link>
-            <ul>{/* Lógica de renderizado condicional */}
-                {user ? (
-                    <>{/* Mostrar Gestion SOLO si el usuario es admin */}
-                        {user.rol === 'admin' && (
-                            <li><Link to="/gestion" style={{ color: 'black' }}>Gestion</Link></li>)}
-                        <Link to="/cupones">
-                            Cupones
-                        </Link>
-                        <span>¡Hola, {user.email}!</span>
-                        <button onClick={handleLogout}>Cerrar Sesión</button>
-                    </>
-                ) : (
-                    <li><Link to="/login">Login</Link></li>
-                )}
-            </ul>
+
+            {user ? (
+                <>
+                    <span className={styles.user}>
+                        ¡Hola {user.rol === "admin" ? "Admin" : user.email}!
+                    </span>
+
+                    <button
+                        className={styles.logout}
+                        onClick={handleLogout}
+                    >
+                        Cerrar sesión
+                    </button>
+                </>
+            ) : (
+                <Link to="/login">Login</Link>
+            )}
 
         </nav>
     );
