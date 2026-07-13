@@ -5,7 +5,9 @@ import {
     onAuthStateChanged,
     signOut,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+     setPersistence,
+    browserSessionPersistence
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 // 1. Crear el contexto
@@ -24,6 +26,14 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const auth = getAuth(); // Obtenemos la instancia de auth una sola vez
     const db = getFirestore(); // Inicializamos Firestore
+  
+    //es molesto pero por seguridad el admin debe loguearse si se cierra la pestaña
+    useEffect(() => {
+    setPersistence(auth, browserSessionPersistence)
+        .catch((error) => {
+            console.error("Error configurando persistencia:", error);
+        });
+}, [auth]);
     // Función para registrar un nuevo usuario
     const signup = async (nombre, email, password) => {
         /*  return createUserWithEmailAndPassword(auth, nombre, email, password); */
