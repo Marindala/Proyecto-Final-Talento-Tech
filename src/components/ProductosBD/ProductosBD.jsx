@@ -2,20 +2,22 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styles from "./ProductosBD.module.css";
 import { FaSearch } from "react-icons/fa";
 import TarjetaProducto from '../TarjetaProducto/TarjetaProducto.jsx';
-import { Container, Row, Col, Card, Button, InputGroup, Form } from 'react-bootstrap';
-// Importaciones clave de Firebase
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { Container, Col, InputGroup, Form } from 'react-bootstrap';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/config.js';
+import Pagination from '../Pagination/Pagination.jsx';
 
 const ProductosBD = () => {
-    // Estado para guardar los productos que traigamos de la DB
+
     const [productos, setProductos] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    // 2. Filtramos la lista de productos ANTES de renderizarla
+    const [searchTerm, setSearchTerm] = useState("");
+    const [paginaActual, setPaginaActual] = useState(1);
+
+    const productosPorPagina = 8;
 
     useEffect(() => {
-        const productosDB = collection(db, "productos nacionales")
-        console.log(productos);
+        const productosDB = collection(db, "productos nacionales");
+
         getDocs(productosDB).then((resp) => {
             setProductos(
                 resp.docs.map((doc) => ({
@@ -27,20 +29,33 @@ const ProductosBD = () => {
                     categoria: doc.data().Categoria
                 }))
             );
-        })
-    }, []); // El array vacío asegura que este efecto se ejecute solo una vez
+        });
+    }, []);
 
-    // Filtrado optimizado
+    // Filtrar productos
     const productosFiltrados = useMemo(() => {
-
         return productos.filter((prod) =>
             prod.nombre.toLowerCase().includes(searchTerm.toLowerCase())
         );
-
     }, [productos, searchTerm]);
+
+    // Volver siempre a la página 1 cuando se busca
+    useEffect(() => {
+        setPaginaActual(1);
+    }, [searchTerm]);
+
+    // PAGINACIÓN
+    const indiceUltimo = paginaActual * productosPorPagina;
+    const indicePrimero = indiceUltimo - productosPorPagina;
+
+    const productosVisibles = productosFiltrados.slice(
+        indicePrimero,
+        indiceUltimo
+    );
 
     return (
         <Container className="mt-4">
+
             <h1 className={styles.subtitulo}>Productos</h1>
 
             {/* Barra de búsqueda */}
@@ -55,12 +70,13 @@ const ProductosBD = () => {
 
                     <Form.Control
                         type="text"
-                        placeholder=" Buscar por diseño......"
+                        placeholder="Buscar por diseño..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
 
                 </InputGroup>
+
                 <p className={styles.resultados}>
                     Se encontraron {productosFiltrados.length} productos.
                 </p>
@@ -68,20 +84,14 @@ const ProductosBD = () => {
             </div>
 
             <div className={styles.listaProductos}>
-                {/* 5. Mapeamos el estado `productos` para renderizar cada
-uno */}
 
+                {productosVisibles.length > 0 ? (
 
-                {productosFiltrados.length > 0 ? (
+                    productosVisibles.map((prod) => (
 
+                        <Col className={styles.productos} key={prod.id}>
 
-                    productosFiltrados.map(prod => (
-
-
-
-                        < Col className={styles.productos} key={prod.id}>
                             <TarjetaProducto
-                                key={prod.id}
                                 id={prod.id}
                                 nombre={prod.nombre}
                                 precio={prod.precio}
@@ -89,10 +99,15 @@ uno */}
                                 stock={prod.stock}
                                 categoria={prod.categoria}
                             />
+
                             <hr />
+
                         </Col>
+
                     ))
+
                 ) : (
+
                     <p className="text-center">
                         No se encontraron productos.
                     </p>
@@ -101,11 +116,15 @@ uno */}
 
             </div>
 
-        </Container >
+            <Pagination
+                productosPorPagina={productosPorPagina}
+                totalProductos={productosFiltrados.length}
+                paginaActual={paginaActual}
+                setPaginaActual={setPaginaActual}
+            />
 
-
-
-
+        </Container>
     );
 };
+
 export default ProductosBD;

@@ -81,7 +81,7 @@ function ProductoDetalle() {
         <div className={styles.detalleImagen}>
 
           <img
-            src={`/${producto.imagen}`}
+            src={producto.imagen}
             alt={producto.nombre}
             width="300"
           />

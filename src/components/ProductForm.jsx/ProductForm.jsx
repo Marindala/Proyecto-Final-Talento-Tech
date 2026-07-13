@@ -6,7 +6,7 @@ export function ProductForm({ datosForm, setDatosForm,
     handleFormSubmit,
     manejarCambioImagen, loading, imagenInputRef, productoEditar }) {
 
-    const formStyle = {
+   /*  const formStyle = {
         display: 'flex',
         flexDirection: 'column',
         maxWidth: '24rem',
@@ -16,7 +16,7 @@ export function ProductForm({ datosForm, setDatosForm,
         borderRadius: '8px',
         gap: '16px'
     };
-
+ */
     useEffect(() => {
         if (productoEditar) {
             setDatosForm({
@@ -40,10 +40,10 @@ export function ProductForm({ datosForm, setDatosForm,
        return <div className={styles.loader}></div>;
      } */
     return (
-        <form style={formStyle} onSubmit={handleFormSubmit}>
+        <form className={styles.formulario} onSubmit={handleFormSubmit}>
             {loading && <div className={styles.loader}></div>}
             <h3>Agregar Nuevo Producto</h3>
-            <div>
+            <div className={styles.campo}>
                 <label>Nombre del Producto:</label>
 
                 <input
@@ -54,7 +54,7 @@ export function ProductForm({ datosForm, setDatosForm,
                     onChange={manejarCambio}
                 />
             </div>
-            <div>
+            <div className={styles.campo}>
                 <label>Categoría:</label>
                 <input
                     type="text"
@@ -64,7 +64,7 @@ export function ProductForm({ datosForm, setDatosForm,
                     onChange={manejarCambio}
                 />
             </div>
-            <div>
+            <div className={styles.campo}>
                 <label>Precio:</label>
                 <input
                     type="number"
@@ -74,7 +74,7 @@ export function ProductForm({ datosForm, setDatosForm,
                     onChange={manejarCambio}
                 />
             </div>
-            <div>
+            <div className={styles.campo}>
                 <label>Stock:</label>
                 <input
                     type="number"
@@ -84,7 +84,7 @@ export function ProductForm({ datosForm, setDatosForm,
                     onChange={manejarCambio}
                 />
             </div>
-            <div>
+            <div className={styles.campo}>
                 <label>Imagen:</label>
                 <input
                     type="file"
@@ -101,17 +101,7 @@ export function ProductForm({ datosForm, setDatosForm,
 
                 />
             </div>
-            <button type="submit" disabled={loading}> {loading ? 'Subiendo...' : 'Guardar Producto'}</button>
+            <button  className={styles.boton} type="submit" disabled={loading}> {loading ? 'Subiendo...' : 'Guardar Producto'}</button>
         </form>
     );
 }
-/*  <input
-   name="nombre"
-   value={datosForm.nombre}
-   onChange={manejarCambio}
- />
- 
- <button type="submit">Guardar</button>
-</form>
-);
-} */

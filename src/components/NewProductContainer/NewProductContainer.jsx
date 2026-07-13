@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react'
 import { ProductForm } from '../ProductForm.jsx/ProductForm';
 import { getFirestore, collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { toast } from "react-toastify";
 
-function NewProductContainer({ productoEditar }) {
+function NewProductContainer({ productoEditar, setProductoEditar, fetchProductos }) {
     // 1. Guarda los datos en el estado
     const [datosForm, setDatosForm] = useState({
         nombre: '',
@@ -85,6 +86,9 @@ function NewProductContainer({ productoEditar }) {
                     productoCompleto
                 );
 
+                fetchProductos();
+                setProductoEditar(null);
+
                 alert("Producto actualizado correctamente ✅");
 
 
@@ -95,8 +99,10 @@ function NewProductContainer({ productoEditar }) {
                     collection(db, "productos nacionales"),
                     productoCompleto
                 );
+                fetchProductos();
 
-                alert("Producto creado correctamente ✅");
+                /* alert("Producto creado correctamente ✅"); */
+                toast.success("Producto creado correctamente ✅");
             }
 
 

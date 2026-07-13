@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { db } from '../../Firebase/config.js';
 import { collection, getDocs, deleteDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import NewProductContainer from '../NewProductContainer/NewProductContainer';
@@ -7,6 +7,7 @@ import styles from "./Gestion.module.css"
 const Gestion = () => {
     const [productoEditar, setProductoEditar] = useState(null);
     const [productos, setProductos] = useState([]);
+    const formularioRef = useRef(null);
     const [mostrarModal, setMostrarModal] = useState(false);
     const [datosForm, setDatosForm] = useState({
         nombre: '',
@@ -21,29 +22,30 @@ const Gestion = () => {
         stock: 0,
         imagen: ""
     };
+    const fetchProductos = async () => {
+        const productosRef = collection(db, "productos nacionales");
+
+        const resp = await getDocs(productosRef);
+
+        setProductos(
+            resp.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id
+            }))
+        );
+    };
     useEffect(() => {
-        const fetchProductos = async () => {
-            const productosRef = collection(db, "productos nacionales"); //
-            //Ajustar "productos" al nombre de tu colección
-            const resp = await getDocs(productosRef);
-            setProductos(
-                resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            );
-        };
         fetchProductos();
     }, []);
 
-    /*  useEffect(() => {
-         if (productoAEditar) {
-             setDatosForm(productoAEditar);
-         } else {
-             setDatosForm(estadoInicialForm);
-         }
-     }, [productoAEditar]); */
 
     const handleEditClick = (producto) => {
         setProductoEditar(producto);
         setMostrarModal(false);
+        formularioRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     };
 
     const cancelarEdicion = () => {
@@ -69,11 +71,14 @@ const Gestion = () => {
 
             <h2 className={styles.title}>Gestión de Productos</h2>
             <hr />
-            <NewProductContainer
-                productoEditar={productoEditar}
-                setProductoEditar={setProductoEditar}
+            <div ref={formularioRef}>
+                <NewProductContainer
+                    productoEditar={productoEditar}
+                    setProductoEditar={setProductoEditar}
+                     fetchProductos={fetchProductos}
 
-            />
+                />
+            </div>
             {productoEditar && (
                 <div className={styles.contenedorCancelar}>
                     <button
@@ -126,25 +131,38 @@ const Gestion = () => {
             <ul className={styles.lista}>
                 {productos.map((prod) => (
                     <li key={prod.id} className={styles.item}>
-                        <span className={styles.nombre}>
-                            {prod.Nombre}
-                        </span>
-                        {" - "}
-                        <span className={styles.precio}>
-                            ${prod.Precio}
-                        </span>
-                        <span>
-                            {" "} | {prod.Categoria}
-                        </span>
-                        <button className={styles.btnEliminar} onClick={() => handleDelete(prod.id)} style={{
-                            marginLeft:
-                                '10px'
-                        }}>Eliminar</button>
-                        <button className={styles.btnEliminar} onClick={() => handleEditClick(prod)} style={{
-                            marginLeft:
-                                '10px'
-                        }}>Editar</button>
-                        {/*acá agregaremos los botones de acción */}
+
+                        <div className={styles.info}>
+
+                            <h5>{prod.Nombre}</h5>
+
+                            <p>
+                                <strong>Categoría:</strong> {prod.Categoria}
+                            </p>
+
+                            <p className={styles.precio}>
+                                ${prod.Precio}
+                            </p>
+
+                        </div>
+
+                        <div className={styles.botones}>
+
+                            <button
+                                className={styles.btnEditar}
+                                onClick={() => handleEditClick(prod)}
+                            >
+                                ✏️ Editar
+                            </button>
+
+                            <button
+                                className={styles.btnEliminar}
+                                onClick={() => handleDelete(prod.id)}
+                            >
+                                🗑 Eliminar
+                            </button>
+
+                        </div>
                     </li>
                 ))}
             </ul>
