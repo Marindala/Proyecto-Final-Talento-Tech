@@ -53,15 +53,23 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
        className={styles.card}
      > */
     <div className={styles.card}>
-      <Link to={`/producto/${id}`} className={styles.detalle}>  {/* detalle de tarjeta */}
-        <img className={styles.imagen} src={imagen} alt={nombre} />
+     
+
+      <Link to={`/producto/${id}`} className={styles.detalle}>
+        <div className={styles.imagenContainer}>
+          <img className={styles.imagen} src={imagen} alt={nombre} />
+
+          <div className={styles.mensaje}>
+            ✨ Click para más detalles ✨
+          </div>
+        </div>
       </Link>
 
       <h2 className={styles.nombre}>{nombre}</h2>
       <p className={styles.precio}>
         ${precio.toLocaleString("es-AR")}
       </p>
-      <p>Stock disponible: {stock}</p>
+      {/*   <p>Stock disponible: {stock}</p>
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent:
           'center', margin: '10px 0'
@@ -86,7 +94,7 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
           </button>
         </div>
       </div>
-      <div className={styles.izquierda}></div>
+      <div className={styles.izquierda}></div> */}
       <div className={styles.contentBoton}>
         <button className={styles.boton} onClick={agregarAlCarrito}>Agregar {cantidad} al carrito</button>
         <span onClick={marcarComoFavorito}
