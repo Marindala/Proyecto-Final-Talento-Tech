@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from "./TarjetaProducto.module.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
   const [cantidad, setCantidad] = useState(0);
@@ -53,54 +54,37 @@ function TarjetaProducto({ id, nombre, precio, imagen, stock }) {
        className={styles.card}
      > */
     <div className={styles.card}>
-     
 
-      <Link to={`/producto/${id}`} className={styles.detalle}>
-        <div className={styles.imagenContainer}>
-          <img className={styles.imagen} src={imagen} alt={nombre} />
+
+      <div className={styles.imagenContainer}>
+
+        <Link to={`/producto/${id}`} className={styles.detalle}>
+
+          <img
+            className={styles.imagen}
+            src={imagen}
+            alt={nombre}
+          />
 
           <div className={styles.mensaje}>
             ✨ Click para más detalles ✨
           </div>
-        </div>
-      </Link>
 
-      <h2 className={styles.nombre}>{nombre}</h2>
-      <p className={styles.precio}>
-        ${precio.toLocaleString("es-AR")}
-      </p>
-      {/*   <p>Stock disponible: {stock}</p>
-      <div style={{
-        display: 'flex', alignItems: 'center', justifyContent:
-          'center', margin: '10px 0'
-      }}>
-        <div className={styles.contador}>
-          <button
-            className={styles.contadorBtn}
-            onClick={decrementar}
-          >
-            −
-          </button>
+        </Link>
 
-          <span className={styles.cantidad}>
-            {cantidad}
-          </span>
 
-          <button
-            className={styles.contadorBtn}
-            onClick={incrementar}
-          >
-            +
-          </button>
-        </div>
-      </div>
-      <div className={styles.izquierda}></div> */}
-      <div className={styles.contentBoton}>
-        <button className={styles.boton} onClick={agregarAlCarrito}>Agregar {cantidad} al carrito</button>
-        <span onClick={marcarComoFavorito}
+        <button
+          onClick={marcarComoFavorito}
           className={styles.favorito}
-        > {esFavorito ? '⭐' : '☆'}
-        </span>
+          aria-label="Agregar a favoritos"
+        >
+          <i className={`bi ${esFavorito ? "bi-heart-fill" : "bi-heart"}`}></i>
+        </button>
+
+        <h2 className={styles.nombre}>{nombre}</h2> 
+        <p className={styles.precio}> ${precio.toLocaleString("es-AR")} </p>
+
+
       </div>
     </div>
   );

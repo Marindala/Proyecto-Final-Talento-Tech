@@ -4,9 +4,7 @@
   padding: 15px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
   text-align: center;
-
-  width: 100%;
-  max-width: 320px;
+  width: 320px;
 
   display: flex;
   flex-direction: column;
@@ -18,27 +16,20 @@
 }
 
 /* IMAGEN */
-.imagen {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 14px 14px 0 0;
-
-}
-
-.imagenContainer {
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px 14px 0 0;
-}
-
 
 .imagen {
   width: 100%;
   height: 400px;
   object-fit: cover;
   transition: transform 0.4s ease;
+  border-radius: 14px 14px 0 0;
 }
+
+
+
+
+
+
 
 
 .mensaje {
@@ -60,6 +51,11 @@
   padding: 20px;
 }
 
+.imagenContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
 
 .imagenContainer:hover .mensaje {
   opacity: 1;
@@ -98,7 +94,7 @@
   align-items: center;
   gap: 12px;
   margin: 15px 0;
-   color: var(--taupe);
+  color: var(--taupe);
 }
 
 .contadorBtn {
@@ -147,7 +143,7 @@
   padding: 8px 12px;
   border: none;
   border-radius: 10px;
-  background-color:var(--earth);
+  background-color: var(--earth);
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -169,14 +165,41 @@
 
 .favorito {
   grid-column: 3;
-  /* la estrella en la derecha */
+
   justify-self: end;
   font-size: 22px;
   cursor: pointer;
 }
 
-
+/* 
 .favorito:hover {
   transform: scale(1.2);
   transition: 0.2s;
+} */
+
+.favorito {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  color: #e63946;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform .2s ease;
+}
+
+.favorito:hover {
+  transform: scale(1.15);
+}
+
+.favorito i {
+  line-height: 1;
 }

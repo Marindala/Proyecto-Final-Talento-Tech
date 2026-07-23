@@ -89,7 +89,7 @@ const ProductosBD = () => {
 
                     productosVisibles.map((prod) => (
 
-                        <Col className={styles.productos} key={prod.id}>
+                        <div className={styles.productos} key={prod.id}>
 
                             <TarjetaProducto
                                 id={prod.id}
@@ -102,7 +102,7 @@ const ProductosBD = () => {
 
                             <hr />
 
-                        </Col>
+                        </div>
 
                     ))
 
